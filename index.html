@@ -970,6 +970,32 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
             <div class="ob" onclick="setO(this,'freq','week')">Semanal</div>
           </div>
         </div>
+        <!-- Qué incluye el servicio — justifica la inversión -->
+        <div id="grp-includes" style="margin-top:1rem;background:var(--green-pale);border:1px solid rgba(42,124,92,.2);border-radius:var(--r);padding:1rem">
+          <div style="font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--green-dark);margin-bottom:.65rem">✅ ¿Qué incluye este precio?</div>
+          <div id="includes-home">
+            <div style="display:flex;flex-direction:column;gap:.45rem">
+              <div style="display:flex;gap:.55rem;font-size:.81rem;color:var(--text-m)"><span style="color:var(--green);font-weight:700;flex-shrink:0">✓</span>Vapor a presión en <strong>pisos de cerámica y piso flotante</strong></div>
+              <div style="display:flex;gap:.55rem;font-size:.81rem;color:var(--text-m)"><span style="color:var(--green);font-weight:700;flex-shrink:0">✓</span>Desinfección de <strong>1 sofá</strong> incluida en el servicio base</div>
+              <div style="display:flex;gap:.55rem;font-size:.81rem;color:var(--text-m)"><span style="color:var(--green);font-weight:700;flex-shrink:0">✓</span>Tratamiento de <strong>1 cama (colchón)</strong> con ozono incluido</div>
+              <div style="display:flex;gap:.55rem;font-size:.81rem;color:var(--text-m)"><span style="color:var(--green);font-weight:700;flex-shrink:0">✓</span>Baños, cocina, manillas e interruptores</div>
+              <div style="display:flex;gap:.55rem;font-size:.81rem;color:var(--text-m)"><span style="color:var(--green);font-weight:700;flex-shrink:0">✓</span>Ciclo de ozono O₃ completo — 30 min sin que debas estar</div>
+              <div style="display:flex;gap:.55rem;font-size:.81rem;color:var(--text-m)"><span style="color:var(--green);font-weight:700;flex-shrink:0">✓</span>Informe fotográfico antes/después por WhatsApp</div>
+            </div>
+            <div style="margin-top:.75rem;padding-top:.65rem;border-top:1px solid rgba(42,124,92,.2);font-size:.77rem;color:var(--text-s)">
+              <span style="color:#c0392b;font-weight:600">✗ No incluye:</span> lavado de alfombras (disponible próximamente como extra) · interior de WC · electrodomésticos por dentro · ventanas en altura
+            </div>
+          </div>
+          <div id="includes-auto" style="display:none">
+            <div style="display:flex;flex-direction:column;gap:.45rem">
+              <div style="display:flex;gap:.55rem;font-size:.81rem;color:var(--text-m)"><span style="color:var(--green);font-weight:700;flex-shrink:0">✓</span>Ciclo de ozono completo en todo el habitáculo</div>
+              <div style="display:flex;gap:.55rem;font-size:.81rem;color:var(--text-m)"><span style="color:var(--green);font-weight:700;flex-shrink:0">✓</span>Neutralización de olores en tapicería, alfombra y techo</div>
+              <div style="display:flex;gap:.55rem;font-size:.81rem;color:var(--text-m)" id="includes-auto-vapor" style="display:none"><span style="color:var(--green);font-weight:700;flex-shrink:0">✓</span>Limpieza a vapor en tablero, manillas y consola central</div>
+              <div style="display:flex;gap:.55rem;font-size:.81rem;color:var(--text-m)"><span style="color:var(--green);font-weight:700;flex-shrink:0">✓</span>Desinfección del sistema de aire acondicionado</div>
+              <div style="display:flex;gap:.55rem;font-size:.81rem;color:var(--text-m)"><span style="color:var(--green);font-weight:700;flex-shrink:0">✓</span>En tu domicilio — sin mover el auto</div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="price-card">
         <div class="pc-lbl">Tu precio por visita</div>
@@ -1313,13 +1339,19 @@ function isAuto(){
 
 function onTypeChange(){
   const auto=isAuto();
+  const isAutoFull=document.getElementById("cType").value==="auto_full";
   // Mostrar/ocultar opciones que no aplican al auto
   document.getElementById("grp-bath").style.display=auto?"none":"";
   document.getElementById("grp-car").style.display=auto?"none":"";
-  // Mascotas aplica siempre (olor en auto también)
   // Extras
   document.getElementById("extras-home").style.display=auto?"none":"";
   document.getElementById("extras-auto").style.display=auto?"block":"none";
+  // Box incluye
+  document.getElementById("includes-home").style.display=auto?"none":"block";
+  document.getElementById("includes-auto").style.display=auto?"block":"none";
+  // Item vapor auto solo si es auto_full
+  const av=document.getElementById("includes-auto-vapor");
+  if(av)av.style.display=isAutoFull?"flex":"none";
   // Reset baños y auto si se cambió a auto
   if(auto){st.bath=1;st.car=0;}
   // Ocultar/mostrar lineas del desglose
@@ -1335,7 +1367,8 @@ function changeQty(k,d){
   document.getElementById(k+"-qty").textContent=extraQtys[k];
   const p=extraQtys[k]*EXTRAS_P[k];
   document.getElementById(k+"-price").textContent=p>0?"$"+p.toLocaleString("es-CL"):"$0";
-  calcP();
+  calcP();           // actualiza precio en price-card (paso 1)
+  updateResumen();   // actualiza resumen en paso 2
 }
 function setO(el,k,v){
   st[k]=v;
@@ -1411,30 +1444,56 @@ calcP();
 
 function updateResumen(){
   const sz=document.getElementById("cType").options[document.getElementById("cType").selectedIndex].text;
-  const total=document.getElementById("pcAmt").textContent;
+  const visitPrice=document.getElementById("pcAmt").textContent;
+  const ext=getExt();
   const saving=document.getElementById("pcSaving").textContent;
-  document.getElementById("resumenText").innerHTML=`<strong>${sz}</strong> · ${FL[st.freq]} · <strong style="color:var(--green-dark)">${total}</strong>${saving?" · "+saving:""}`;
+
+  let html=`<strong>${sz}</strong> · ${FL[st.freq]} · <strong style="color:var(--green-dark)">${visitPrice}/visita</strong>`;
+  if(ext>0) html+=` · Extras: <strong style="color:var(--green-dark)">${f(ext)}</strong>`;
+  if(saving) html+=` · <em>${saving}</em>`;
+
+  // Periodo
+  if(st.freq==="bi"||st.freq==="week"){
+    const visits=st.freq==="bi"?2:4;
+    const visitNum=parseInt(document.getElementById("pcAmt").textContent.replace(/\D/g,""));
+    const periodTotal=visitNum*visits;
+    const label=st.freq==="bi"?"Total mensual (2 visitas)":"Total mensual (4 visitas, 1 gratis 🎁)";
+    html+=`<br><span style="font-size:.88em"><strong>${label}:</strong> <strong style="color:var(--green-dark)">${f(periodTotal)}</strong></span>`;
+  }
+  document.getElementById("resumenText").innerHTML=html;
 }
 function buildSummary(){
   const sz=document.getElementById("cType").options[document.getElementById("cType").selectedIndex].text;
   const auto=isAuto();
-  const e=[];
+  const eLines=[];
+  let extrasTotal=0;
   if(!auto){
-    if(extraQtys.mattress>0)e.push(`${extraQtys.mattress} colchón(es)`);
-    if(extraQtys.sofa>0)e.push(`${extraQtys.sofa} sofá(s)`);
-    if(extraQtys.chair>0)e.push(`${extraQtys.chair} silla(s)`);
-    if(extraQtys.babyseat>0)e.push(`${extraQtys.babyseat} silla(s) de bebé`);
+    if(extraQtys.mattress>0){const v=extraQtys.mattress*EXTRAS_P.mattress;eLines.push(`${extraQtys.mattress} colchón(es) = ${f(v)}`);extrasTotal+=v;}
+    if(extraQtys.sofa>0){const v=extraQtys.sofa*EXTRAS_P.sofa;eLines.push(`${extraQtys.sofa} sofá(s) = ${f(v)}`);extrasTotal+=v;}
+    if(extraQtys.chair>0){const v=extraQtys.chair*EXTRAS_P.chair;eLines.push(`${extraQtys.chair} silla(s) = ${f(v)}`);extrasTotal+=v;}
+    if(extraQtys.babyseat>0){const v=extraQtys.babyseat*EXTRAS_P.babyseat;eLines.push(`${extraQtys.babyseat} silla(s) bebé = ${f(v)}`);extrasTotal+=v;}
   }
-  // Include period summary in WhatsApp
+  const visitPrice=parseInt(document.getElementById("pcAmt").textContent.replace(/\D/g,""));
+  const totalWithExtras=visitPrice+extrasTotal;
+
   let periodInfo="";
   if(st.freq==="bi"){
-    const total=parseInt(document.getElementById("pcAmt").textContent.replace(/\D/g,""));
-    periodInfo=`\n  • Total mensual (2 visitas): ${f(total*2)}`;
+    const visitsTotal=totalWithExtras*2;
+    const puntualBase=calcForFreq(BASE_ONCE[document.getElementById("cType").value]||52000,auto?0:(BATH[st.bath]||0),st.pet?3000:0,(auto||st.car===0)?0:15000,extrasTotal,"once").total;
+    const saving=(puntualBase*2)-visitsTotal;
+    periodInfo=`\n  • Total mensual (2 visitas): ${f(visitsTotal)}\n  • Ahorro vs puntual: ${f(saving)}`;
   } else if(st.freq==="week"){
-    const total=parseInt(document.getElementById("pcAmt").textContent.replace(/\D/g,""));
-    periodInfo=`\n  • Total mensual (4 visitas): ${f(total*4)}\n  • 🎁 Incluye 1 visita gratis/mes`;
+    const visitsTotal=totalWithExtras*4;
+    periodInfo=`\n  • Total mensual (4 visitas): ${f(visitsTotal)}\n  • 🎁 Incluye 1 visita gratis/mes`;
   }
-  return{sz,freq:FL[st.freq],total:document.getElementById("pcAmt").textContent,extras:e.join(", ")||"—",periodInfo};
+  return{
+    sz,freq:FL[st.freq],
+    visitPrice:f(visitPrice),
+    extras:eLines.length?eLines.join(", "):"—",
+    extrasTotal:extrasTotal>0?f(extrasTotal):null,
+    totalWithExtras:f(totalWithExtras),
+    periodInfo
+  };
 }
 
 // ── FORMULARIO → WHATSAPP ────────────────────
@@ -1448,7 +1507,8 @@ function sendFormAndContinue(){
   const when=document.getElementById("fWhen").value||"No indicado";
   const notes=document.getElementById("fNt").value||"—";
   const sum=buildSummary();
-  const msg=`Hola OzoneCare! 🌿 Quiero reservar un servicio.\n\n*Nombre:* ${n}\n*WhatsApp:* ${p}\n*Sector:* ${s}\n\n🧾 *Cotización:*\n  • Espacio: ${sum.sz}\n  • Frecuencia: ${sum.freq}\n  • Precio por visita: ${sum.total}${sum.periodInfo}\n  • Extras: ${sum.extras}\n\n👨‍👩‍👧 *Contexto:*\n  • Niños: ${kids}\n  • Mascotas: ${pets}\n  • Cuándo: ${when}\n  • Notas: ${notes}\n\n(Enviado desde ozonecare.cl)`;
+  const extrasLine=sum.extrasTotal?`\n  • Extras: ${sum.extras}\n  • Subtotal extras: ${sum.extrasTotal}\n  • Total por visita (con extras): ${sum.totalWithExtras}`:`\n  • Extras: —`;
+  const msg=`Hola OzoneCare! 🌿 Quiero reservar un servicio.\n\n*Nombre:* ${n}\n*WhatsApp:* ${p}\n*Sector:* ${s}\n\n🧾 *Cotización:*\n  • Espacio: ${sum.sz}\n  • Frecuencia: ${sum.freq}\n  • Precio por visita: ${sum.visitPrice}${extrasLine}${sum.periodInfo}\n\n👨‍👩‍👧 *Contexto:*\n  • Niños: ${kids}\n  • Mascotas: ${pets}\n  • Cuándo: ${when}\n  • Notas: ${notes}\n\n(Enviado desde ozonecare.cl)`;
   document.getElementById("okMsg").style.display="block";
   setTimeout(()=>{
     document.getElementById("okMsg").style.display="none";
