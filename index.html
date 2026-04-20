@@ -342,10 +342,11 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
   /* --- GRIDS --- */
   .rc-grid{grid-template-columns:repeat(2,1fr);gap:.85rem}
   .rc-grid-3{grid-template-columns:repeat(2,1fr);gap:.85rem}
-  .rc-img{height:340px}
-  /* on touch: always show content */
-  .rc-desc{max-height:130px!important;opacity:1!important}
-  .rc-detail{max-height:250px!important;opacity:1!important}
+  .rc-img{height:520px}
+  /* Tarjetas — en móvil siempre expandidas (igual que hover desktop) */
+  .rc-overlay{background:linear-gradient(180deg,transparent 0%,rgba(8,18,32,.88) 38%,rgba(8,18,32,.97) 100%)}
+  .rc-desc{max-height:200px!important;opacity:1!important;margin-bottom:.5rem}
+  .rc-detail{max-height:300px!important;opacity:1!important}
 
   /* --- INFO TABS / CIENCIA --- */
   .tab-bar,.tab-bar-light{width:100%;overflow-x:auto}
@@ -544,7 +545,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
       <a href="#cuidado" class="btn btn-wh">Ver situaciones</a>
     </div>
   </div>
-  <div class="hero-right"><img src="images/hero.png" alt="Familia en hogar desinfectado"></div>
+  <div class="hero-right"><img src="images/card-familia.png" alt="Familia en hogar desinfectado"></div>
 </div>
 </section>
 
@@ -648,7 +649,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
       </div>
     </div>
     <div class="rc rv d3">
-      <div class="rc-img"><img src="images/card-familia.png" alt="Contaminación en cocinas"></div>
+      <div class="rc-img"><img src="images/card-casa.png" alt="Contaminación en cocinas"></div>
       <div class="rc-overlay">
         <div class="rc-tag">Cocinas</div>
         <div class="rc-title"><em>70%</em> de contaminación</div>
@@ -660,7 +661,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
       </div>
     </div>
     <div class="rc rv d4">
-      <div class="rc-img"><img src="images/card-bebe.png" alt="Aire interior y patógenos"></div>
+      <div class="rc-img"><img src="images/card-ozono.png" alt="Aire interior y patógenos"></div>
       <div class="rc-overlay">
         <div class="rc-tag">Aire interior</div>
         <div class="rc-title"><em>5× más</em> patógenos</div>
@@ -691,7 +692,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
   <!-- 6 tarjetas: 2 filas de 3 -->
   <div class="rc-grid-3" style="margin-top:2rem">
     <div class="rc rv d1">
-      <div class="rc-img"><img src="images/card-mascotas.png" alt="Hogar familiar"></div>
+      <div class="rc-img"><img src="images/card-casa.png" alt="Hogar familiar"></div>
       <div class="rc-overlay">
         <div class="rc-tag">Hogar y familia</div>
         <div class="rc-title">Tu hogar.<br><em>Protegido de verdad.</em></div>
@@ -705,7 +706,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
       </div>
     </div>
     <div class="rc rv d2">
-      <div class="rc-img"><img src="images/card-familia.png" alt="Jardín infantil"></div>
+      <div class="rc-img"><img src="images/card-jardines.png" alt="Jardín infantil"></div>
       <div class="rc-overlay">
         <div class="rc-tag">Jardines infantiles</div>
         <div class="rc-title">El ambiente más seguro<br><em>para los más pequeños.</em></div>
@@ -719,7 +720,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
       </div>
     </div>
     <div class="rc rv d3">
-      <div class="rc-img"><img src="images/card-alergias.png" alt="Oficinas"></div>
+      <div class="rc-img"><img src="images/card-oficina.png" alt="Oficinas corporativas"></div>
       <div class="rc-overlay">
         <div class="rc-tag">Oficinas y corporativos</div>
         <div class="rc-title">Ambiente sano.<br><em>Sin interrumpir.</em></div>
@@ -733,7 +734,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
       </div>
     </div>
     <div class="rc rv d4">
-      <div class="rc-img"><img src="images/card-airbnb.png" alt="Veterinaria y grooming"></div>
+      <div class="rc-img"><img src="images/card-vet.png" alt="Veterinaria y grooming"></div>
       <div class="rc-overlay">
         <div class="rc-tag">Veterinarias y Grooming</div>
         <div class="rc-title">Neutraliza olores.<br><em>Entre cada atención.</em></div>
@@ -747,7 +748,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
       </div>
     </div>
     <div class="rc rv d1">
-      <div class="rc-img"><img src="images/card-bebe.png" alt="Desinfección de autos"></div>
+      <div class="rc-img"><img src="images/card-auto.png" alt="Desinfección de autos"></div>
       <div class="rc-overlay">
         <div class="rc-tag">Desinfección de Autos</div>
         <div class="rc-title">Dentro de tu auto.<br><em>Más limpio que lo ves.</em></div>
@@ -761,7 +762,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
       </div>
     </div>
     <div class="rc rv d2">
-      <div class="rc-img"><img src="images/trust-camara.png" alt="Gimnasios"></div>
+      <div class="rc-img"><img src="images/card-gimnasio.png" alt="Gimnasios y deporte"></div>
       <div class="rc-overlay">
         <div class="rc-tag">Gimnasios y deporte</div>
         <div class="rc-title">Alta humedad.<br><em>Alta circulación.</em></div>
