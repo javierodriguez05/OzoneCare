@@ -6,23 +6,21 @@
 <title>OzoneCare — Desinfección Profesional · Buín y sectores</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <style>
 :root{
   --green:#2A7C5C;--green-l:#3DAA7D;--green-pale:#EAF5EF;--green-dark:#1A5240;
   --navy:#0F1F2E;--navy-m:#1C3347;
   --cream:#FAFAF7;--warm:#F5F0E8;--sand:#DDD5C4;
   --text:#1C1C1A;--text-m:#4D5A52;--text-s:#8A9990;
-  --white:#FFFFFF;--warn:#E8513A;--warn-pale:#FEF0ED;
   --r:14px;--rl:22px;--rxl:32px;
-  --sh:0 2px 20px rgba(0,0,0,.08);--sh-l:0 8px 40px rgba(0,0,0,.12);
+  --sh:0 2px 20px rgba(0,0,0,.08);--sh-l:0 8px 40px rgba(0,0,0,.14);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:"Outfit",sans-serif;background:var(--cream);color:var(--text);line-height:1.6;overflow-x:hidden}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:var(--green);border-radius:3px}
 
-/* ── NAV ── */
+/* ── NAV ─────────────────────────────────── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:.85rem 2rem;display:flex;justify-content:space-between;align-items:center;transition:all .3s}
 nav.scrolled{background:rgba(250,250,247,.96);backdrop-filter:blur(14px);box-shadow:0 1px 20px rgba(0,0,0,.06)}
 .logo{font-family:"Playfair Display",serif;font-size:1.45rem;font-weight:700;color:white;text-decoration:none;letter-spacing:-.02em;transition:color .3s}
@@ -35,12 +33,13 @@ nav.scrolled .nav-links a{color:var(--text-m)}
 .nav-links a:hover{color:white}
 nav.scrolled .nav-links a:hover{color:var(--green)}
 .nav-cta{background:var(--green)!important;color:white!important;padding:.45rem 1.1rem;border-radius:50px!important;font-size:.82rem!important}
-.nav-cta:hover{background:var(--green-l)!important}
 .burger{display:none;flex-direction:column;gap:4px;cursor:pointer}
 .burger span{display:block;width:20px;height:1.5px;background:white;transition:all .3s;border-radius:2px}
 nav.scrolled .burger span{background:var(--navy)}
+.urgency-bar{background:linear-gradient(90deg,var(--green-dark),var(--green));padding:.65rem 2rem;text-align:center;font-size:.8rem;font-weight:600;color:white;letter-spacing:.04em}
+.urgency-bar span{opacity:.75;font-weight:400;margin-left:.5rem}
 
-/* ── HERO ── */
+/* ── HERO ──────────────────────────────────*/
 .hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
 .hero-left{background:var(--navy);padding:9rem 3rem 4rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
 .hero-left::after{content:"";position:absolute;right:-50px;top:0;bottom:0;width:100px;background:var(--navy);clip-path:polygon(0 0,60% 0,100% 100%,0 100%);z-index:3}
@@ -60,12 +59,11 @@ h1 em{font-style:italic;color:var(--green-l)}
 .btn-g:hover{background:var(--green-l);transform:translateY(-1px)}
 .btn-wh{background:transparent;color:white;padding:.8rem 1.9rem;border:1.5px solid rgba(255,255,255,.25)}
 .btn-wh:hover{border-color:white;background:rgba(255,255,255,.06)}
-.btn-dk{background:var(--navy);color:white;padding:.8rem 1.9rem}
-.btn-dk:hover{background:var(--navy-m)}
-.scroll-hint{position:absolute;bottom:2rem;left:3rem;color:rgba(255,255,255,.35);font-size:.72rem;letter-spacing:.1em;display:flex;align-items:center;gap:.5rem}
-.scroll-line{width:28px;height:1px;background:rgba(255,255,255,.25)}
+.hero-badge{display:inline-flex;align-items:center;gap:.55rem;background:rgba(61,170,125,.15);border:1px solid rgba(61,170,125,.3);color:var(--green-l);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.38rem 1rem;border-radius:50px;margin-bottom:1.1rem}
+.hero-badge::before{content:"♡";font-size:.9rem}
+.hero-divider{width:40px;height:2px;background:var(--green);margin:1.5rem 0}
 
-/* ── SECTIONS ── */
+/* ── SHARED ─────────────────────────────── */
 section{padding:5.5rem 2rem}
 .c{max-width:1100px;margin:0 auto}
 h2{font-family:"Playfair Display",serif;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:700;line-height:1.15;letter-spacing:-.02em}
@@ -74,99 +72,131 @@ h2 em{font-style:italic;color:var(--green)}
 .stag::before{content:"";width:5px;height:5px;background:var(--green);border-radius:50%}
 p.lead{color:var(--text-m);font-size:.92rem;line-height:1.8;font-weight:300}
 
-/* ── FACTS dark ── */
-.facts{background:var(--navy);padding:5.5rem 2rem}
-.facts .stag{background:rgba(61,170,125,.18);color:var(--green-l)}
-.facts h2{color:white}
-.facts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:rgba(255,255,255,.07);border-radius:var(--rl);overflow:hidden;margin-top:3rem}
-.fc{background:var(--navy);padding:2rem;position:relative;transition:background .25s}
-.fc:hover{background:rgba(255,255,255,.04)}
-.fc-n{font-family:"Playfair Display",serif;font-size:3.2rem;font-weight:700;color:var(--green-l);line-height:1;margin-bottom:.5rem}
-.fc h3{color:rgba(255,255,255,.82);font-size:.9rem;font-weight:500;line-height:1.55;margin-bottom:.45rem}
-.fc p{color:rgba(255,255,255,.42);font-size:.82rem;line-height:1.7}
-.fc-src{font-size:.7rem;color:rgba(255,255,255,.22);margin-top:.65rem;font-style:italic}
+/* ── REVEAL CARDS (shared: care + trust) ── */
+/* Estilo idéntico al sit-card de ¿Te identificas? */
+.rc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-top:2.5rem}
+.rc{border-radius:var(--rl);overflow:hidden;position:relative;cursor:pointer}
+.rc-img{position:relative;height:320px;overflow:hidden}
+.rc-img img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease;display:block}
+.rc:hover .rc-img img{transform:scale(1.05)}
+.rc-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(15,31,46,.9) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.6rem}
+.rc-tag{display:inline-flex;align-items:center;gap:.4rem;background:rgba(61,170,125,.22);border:1px solid rgba(61,170,125,.35);color:var(--green-l);font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .72rem;border-radius:50px;margin-bottom:.55rem;width:fit-content}
+.rc-tag::before{content:"";width:5px;height:5px;background:var(--green-l);border-radius:50%}
+.rc-title{font-family:"Playfair Display",serif;font-size:1.3rem;font-weight:700;color:white;line-height:1.2;margin-bottom:.45rem}
+.rc-title em{font-style:italic;color:var(--green-l)}
+.rc-desc{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:.75rem;max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .4s ease;opacity:0}
+.rc:hover .rc-desc{max-height:100px;opacity:1}
+.rc-detail{display:flex;flex-direction:column;gap:.4rem;max-height:0;overflow:hidden;transition:max-height .4s ease .08s,opacity .3s ease .08s;opacity:0}
+.rc:hover .rc-detail{max-height:200px;opacity:1}
+.rc-di{display:flex;gap:.55rem;align-items:flex-start}
+.rc-di-n{width:20px;height:20px;border-radius:50%;background:var(--green);color:white;font-size:.66rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.06rem}
+.rc-di-n.oz{background:rgba(61,170,125,.25);border:1px solid var(--green-l);color:var(--green-l);font-size:.58rem}
+.rc-di-n.sh{background:rgba(255,255,255,.15);color:rgba(255,255,255,.7);font-size:.75rem}
+.rc-di span{font-size:.76rem;color:rgba(255,255,255,.65);line-height:1.5}
+.rc-cta{display:inline-flex;align-items:center;gap:.45rem;background:var(--green);color:white;font-weight:600;font-size:.8rem;padding:.48rem 1.1rem;border-radius:50px;margin-top:.75rem;transition:background .2s;width:fit-content;text-decoration:none}
+.rc-cta:hover{background:var(--green-l)}
+/* mobile: always show on touch */
+@media(max-width:900px){
+  .rc-desc{max-height:100px!important;opacity:1!important}
+  .rc-detail{max-height:200px!important;opacity:1!important}
+}
 
-/* ── IMG BAND ── */
-.img-band{display:grid;grid-template-columns:1.5fr 1fr;height:460px;border-radius:var(--rxl);overflow:hidden;margin:0 2rem}
-.ib-main{position:relative;overflow:hidden}
-.ib-main img,.ib-sub img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.ib-main:hover img,.ib-sub:hover img{transform:scale(1.04)}
-.ib-r{display:grid;grid-template-rows:1fr 1fr}
-.ib-sub{position:relative;overflow:hidden}
-.ib-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(15,31,46,.75));display:flex;align-items:flex-end;padding:1.25rem}
-.ib-label{color:white;font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+/* ── CUIDADO FAMILIAR ───────────────────── */
+.care-sec{background:var(--warm);padding:5rem 2rem}
 
-/* ── SERVICE ── */
-.svc-layout{display:grid;grid-template-columns:5fr 4fr;gap:3rem;margin-top:3rem;align-items:start}
-.ph-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-s);margin:.5rem 0 .6rem;display:flex;align-items:center;gap:.6rem}
-.ph-label::after{content:"";flex:1;height:1px;background:var(--sand)}
-.step-item{display:flex;gap:.9rem;padding:.9rem 0;border-bottom:1px solid var(--sand);align-items:flex-start}
-.step-item:last-child{border-bottom:none}
-.step-n{width:32px;height:32px;border-radius:50%;background:var(--green-pale);color:var(--green-dark);font-family:"Playfair Display",serif;font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
-.step-n.oz{background:var(--navy);color:var(--green-l)}
-.step-body h4{font-size:.92rem;font-weight:600;color:var(--text);margin-bottom:.2rem}
-.step-body p{font-size:.83rem;color:var(--text-m);line-height:1.65}
-.aside-card{background:var(--navy);border-radius:var(--rl);padding:2rem;color:white;position:sticky;top:88px;overflow:hidden}
-.aside-card img{width:100%;border-radius:var(--r);margin-bottom:1.25rem;object-fit:cover;height:195px}
-.ozone-box{background:rgba(61,170,125,.18);border:1px solid rgba(61,170,125,.3);border-radius:10px;padding:1rem;text-align:center;margin:1rem 0}
-.ozone-f{font-family:"Playfair Display",serif;font-size:2rem;font-weight:700;color:var(--green-l)}
-.ozone-d{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem}
-.b-list{display:flex;flex-direction:column;gap:.55rem;margin-top:.85rem}
-.b-item{font-size:.82rem;color:rgba(255,255,255,.68);display:flex;gap:.55rem;align-items:flex-start;line-height:1.55}
-.b-item::before{content:"◆";color:var(--green-l);font-size:.45rem;margin-top:.35rem;flex-shrink:0}
-.not-inc{background:rgba(255,255,255,.04);border-radius:8px;padding:.75rem;margin-top:1rem;font-size:.77rem;color:rgba(255,255,255,.38);line-height:1.6}
-.not-inc strong{color:rgba(255,255,255,.52);display:block;margin-bottom:.2rem;font-size:.73rem}
+/* ── INFO+FACTS TABS (Nuestra promesa + Estudios) ── */
+.info-tabs-sec{background:var(--navy);padding:5.5rem 2rem;position:relative;overflow:hidden}
+.info-tabs-sec::before{content:"";position:absolute;top:-20%;right:-8%;width:55%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(61,170,125,.07) 0%,transparent 65%);pointer-events:none}
+.info-tabs-sec .stag{background:rgba(61,170,125,.18);color:var(--green-l)}
+.info-tabs-sec h2{color:white}
+.info-tabs-sec h2 em{color:var(--green-l)}
+/* tab bar reutilizable */
+.tab-bar{display:flex;border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);width:fit-content;margin:2rem 0 2.5rem}
+.tab-btn{padding:.65rem 1.6rem;font-size:.82rem;font-weight:600;cursor:pointer;color:rgba(255,255,255,.5);background:transparent;border:none;font-family:"Outfit",sans-serif;transition:all .22s;position:relative;overflow:hidden;white-space:nowrap}
+.tab-btn.active{background:var(--green);color:white}
+.tab-btn:not(.active):hover{color:rgba(255,255,255,.85);background:rgba(255,255,255,.06)}
+.tab-btn .tbp{position:absolute;bottom:0;left:0;height:2.5px;background:rgba(255,255,255,.55);width:0%;transition:width linear}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
 
-/* ── NICHES ── */
-.niches{background:var(--warm)}
-.niches-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2.5rem}
-.niche-card{background:white;border-radius:var(--rl);padding:1.75rem;border:1px solid var(--sand);cursor:default;transition:all .2s;text-align:center}
+/* Promesa cards */
+.promise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.pc2{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--rl);padding:1.6rem;transition:all .2s;cursor:default}
+.pc2:hover{background:rgba(61,170,125,.1);border-color:rgba(61,170,125,.3);transform:translateY(-3px)}
+.pc2-icon{width:44px;height:44px;border-radius:12px;background:rgba(61,170,125,.15);border:1px solid rgba(61,170,125,.2);display:flex;align-items:center;justify-content:center;margin-bottom:.9rem}
+.pc2-icon svg{width:20px;height:20px;fill:none;stroke:var(--green-l);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pc2 h4{font-size:.95rem;font-weight:700;color:white;margin-bottom:.35rem}
+.pc2 p{font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.65}
+.pc2-badge{display:inline-flex;align-items:center;gap:.3rem;background:rgba(61,170,125,.15);color:var(--green-l);font-size:.7rem;font-weight:700;padding:.2rem .6rem;border-radius:50px;margin-top:.6rem}
+.science-quote{text-align:center;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.07)}
+.science-quote blockquote{font-family:"Playfair Display",serif;font-style:italic;font-size:1.45rem;color:rgba(255,255,255,.6);line-height:1.5;max-width:580px;margin:0 auto}
+.science-quote blockquote em{color:var(--green-l);font-style:normal}
+
+/* Estudios cards */
+.studies-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+.sc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--rl);padding:1.6rem;transition:all .2s;cursor:default}
+.sc:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15);transform:translateY(-3px)}
+.sc-n{font-family:"Playfair Display",serif;font-size:2.8rem;font-weight:700;color:var(--green-l);line-height:1;margin-bottom:.4rem}
+.sc h3{color:rgba(255,255,255,.82);font-size:.88rem;font-weight:600;line-height:1.5;margin-bottom:.35rem}
+.sc p{color:rgba(255,255,255,.4);font-size:.8rem;line-height:1.65}
+.sc-src{font-size:.68rem;color:rgba(255,255,255,.2);margin-top:.55rem;font-style:italic}
+
+/* ── NUESTROS SERVICIOS — UNIFIED ────────── */
+.svc-sec{background:var(--cream);padding:5.5rem 2rem}
+/* tab bar light version */
+.tab-bar-light{display:flex;border-radius:var(--r);overflow:hidden;border:1.5px solid var(--sand);background:white;width:fit-content;margin:2rem 0 2.5rem}
+.tab-btn-light{padding:.68rem 1.5rem;font-size:.82rem;font-weight:600;cursor:pointer;color:var(--text-s);background:white;border:none;font-family:"Outfit",sans-serif;transition:all .22s;position:relative;overflow:hidden;white-space:nowrap;border-right:1.5px solid var(--sand)}
+.tab-btn-light:last-child{border-right:none}
+.tab-btn-light.active{background:var(--green);color:white}
+.tab-btn-light:not(.active):hover{background:var(--green-pale);color:var(--green-dark)}
+.tab-btn-light .tbp{position:absolute;bottom:0;left:0;height:3px;background:rgba(255,255,255,.6);width:0%;transition:width linear}
+
+/* Unified service panel layout: image hero + content */
+.svc-hero{position:relative;border-radius:var(--rxl);overflow:hidden;margin-bottom:2rem}
+.svc-hero-img{width:100%;height:400px;object-fit:cover;display:block}
+.svc-hero-fade{position:absolute;inset:0;background:linear-gradient(90deg,transparent 35%,var(--navy-m) 80%)}
+.svc-hero-content{position:absolute;right:0;top:0;bottom:0;width:48%;display:flex;flex-direction:column;justify-content:center;padding:2.5rem 3rem 2.5rem 1rem}
+.svc-hero-content .stag{background:rgba(61,170,125,.18);color:var(--green-l)}
+.svc-hero-content h3{font-family:"Playfair Display",serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:white;line-height:1.2;margin-bottom:.6rem}
+.svc-hero-content h3 em{font-style:italic;color:var(--green-l)}
+.svc-hero-content p{font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:1.2rem}
+.svc-hero-feats{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+.shf{display:flex;gap:.6rem;font-size:.83rem;color:rgba(255,255,255,.7)}
+.shf::before{content:"→";color:var(--green-l);flex-shrink:0}
+.svc-steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.svc-phase{display:flex;flex-direction:column;gap:.75rem}
+.svc-phase-label{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-s);display:flex;align-items:center;gap:.6rem;margin-bottom:.2rem}
+.svc-phase-label::after{content:"";flex:1;height:1px;background:var(--sand)}
+.svc-step{display:flex;gap:.75rem;align-items:flex-start;padding:.75rem;background:white;border-radius:var(--r);border:1px solid var(--sand);transition:border-color .2s}
+.svc-step:hover{border-color:var(--green)}
+.sn{width:30px;height:30px;border-radius:50%;background:var(--green-pale);color:var(--green-dark);font-family:"Playfair Display",serif;font-weight:700;font-size:.95rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sn.oz{background:var(--navy);color:var(--green-l);font-size:.7rem}
+.sb h4{font-size:.86rem;font-weight:600;color:var(--text);margin-bottom:.15rem}
+.sb p{font-size:.79rem;color:var(--text-m);line-height:1.6}
+.not-inc-box{background:var(--warm);border-radius:var(--r);padding:.85rem 1rem;border:1px solid var(--sand);font-size:.78rem;color:var(--text-m);line-height:1.6;margin-top:1.25rem}
+.not-inc-box strong{color:var(--text);font-size:.74rem;display:block;margin-bottom:.2rem}
+/* ozone science inline */
+.oz-science{background:var(--navy);border-radius:var(--rl);padding:1.5rem;color:white;text-align:center;margin-top:1.25rem}
+.oz-formula{font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:700;color:var(--green-l);line-height:1}
+.oz-sub{font-size:.77rem;color:rgba(255,255,255,.45);margin-top:.4rem}
+
+/* Niche grid */
+.niche-grid-inline{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1rem}
+.niche-card{background:white;border-radius:var(--rl);padding:1.6rem;border:1px solid var(--sand);transition:all .2s;text-align:center}
 .niche-card:hover{border-color:var(--green);box-shadow:var(--sh);transform:translateY(-2px)}
-.niche-icon{font-size:2.2rem;margin-bottom:.75rem}
-.niche-card h3{font-size:.95rem;font-weight:600;color:var(--navy);margin-bottom:.4rem}
-.niche-card p{font-size:.82rem;color:var(--text-m);line-height:1.65}
-.niche-price{background:var(--green-pale);color:var(--green-dark);font-size:.75rem;font-weight:700;padding:.25rem .7rem;border-radius:50px;display:inline-block;margin-top:.75rem}
+.niche-icon{font-size:2rem;margin-bottom:.65rem}
+.niche-card h3{font-size:.9rem;font-weight:600;color:var(--navy);margin-bottom:.35rem}
+.niche-card p{font-size:.79rem;color:var(--text-m);line-height:1.6}
+.niche-price{background:var(--green-pale);color:var(--green-dark);font-size:.73rem;font-weight:700;padding:.22rem .65rem;border-radius:50px;display:inline-block;margin-top:.65rem}
 
-/* ── CAR ── */
-.car-sec{background:var(--navy-m)}
-.car-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:var(--rxl);overflow:hidden;margin-top:2.5rem}
-.car-img{position:relative;overflow:hidden;min-height:380px}
-.car-img img{width:100%;height:100%;object-fit:cover}
-.car-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 40%,var(--navy-m) 100%)}
-.car-text{background:var(--navy-m);padding:2.75rem;display:flex;flex-direction:column;justify-content:center}
-.car-sec .stag{background:rgba(61,170,125,.18);color:var(--green-l)}
-.car-sec h2{color:white;margin-bottom:.75rem}
-.car-sec .lead{color:rgba(255,255,255,.55);margin-bottom:1.5rem}
-.car-feats{display:flex;flex-direction:column;gap:.55rem;margin-bottom:2rem}
-.cf{display:flex;gap:.65rem;font-size:.84rem;color:rgba(255,255,255,.68)}
-.cf::before{content:"→";color:var(--green-l);flex-shrink:0}
+/* ── TRUST (reactive cards) ─────────────── */
+.trust-sec{background:var(--cream);padding:5.5rem 2rem}
 
-/* ── TRUST ── */
-.trust{background:var(--warm)}
-.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:.9rem;margin-top:2.5rem}
-.tc{background:white;border-radius:var(--rl);padding:1.5rem;border:1px solid var(--sand)}
-.tc-icon{font-size:1.8rem;margin-bottom:.65rem}
-.tc h3{font-size:.9rem;font-weight:600;color:var(--navy);margin-bottom:.35rem}
-.tc p{font-size:.82rem;color:var(--text-m);line-height:1.65}
-.trust-imgs{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:1.25rem}
-.ti{border-radius:var(--rl);overflow:hidden;position:relative;height:220px}
-.ti img{width:100%;height:100%;object-fit:cover;object-position:top}
-.ti-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(15,31,46,.8));display:flex;align-items:flex-end;padding:1.1rem}
-.ti-label{color:white}
-.ti-label h4{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;margin-bottom:.1rem}
-.ti-label p{font-size:.77rem;color:rgba(255,255,255,.62)}
+/* ── ¿TE IDENTIFICAS? ───────────────────── */
+.situations{background:var(--warm);padding:5.5rem 2rem}
+.sit-bottom{text-align:center;margin-top:3rem}
 
-/* ── PET ADDON ── */
-.pet-card{background:white;border:1px solid var(--sand);border-radius:var(--rl);padding:1.75rem;display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:center;margin-top:1.5rem}
-.pet-badge{background:var(--green-pale);color:var(--green-dark);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .7rem;border-radius:50px;display:inline-block;margin-bottom:.5rem}
-.pet-card h3{font-family:"Playfair Display",serif;font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:.4rem}
-.pet-card p{font-size:.85rem;color:var(--text-m);line-height:1.7;margin-bottom:.85rem}
-.pet-feats{display:flex;flex-direction:column;gap:.35rem}
-.pf{font-size:.82rem;color:var(--text-m);display:flex;gap:.5rem}
-.pf::before{content:"✓";color:var(--green);font-weight:700;flex-shrink:0}
-.pet-img{width:180px;height:180px;border-radius:var(--rl);object-fit:cover;object-position:top}
-
-/* ── BOOKING (3 steps) ── */
+/* ── BOOKING ─────────────────────────────── */
 .booking{background:var(--cream)}
 .step-tabs{display:flex;border-radius:var(--r);overflow:hidden;border:1.5px solid var(--sand);max-width:520px;margin-bottom:2.5rem}
 .step-tab{flex:1;padding:.7rem 1rem;text-align:center;font-size:.82rem;font-weight:600;cursor:pointer;color:var(--text-s);background:white;border-right:1.5px solid var(--sand);transition:all .2s}
@@ -174,7 +204,6 @@ p.lead{color:var(--text-m);font-size:.92rem;line-height:1.8;font-weight:300}
 .step-tab.active{background:var(--green);color:white}
 .step-panel{display:none}
 .step-panel.active{display:block}
-
 /* CALC */
 .calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
 .opt-grp{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.1rem}
@@ -198,10 +227,31 @@ p.lead{color:var(--text-m);font-size:.92rem;line-height:1.8;font-weight:300}
 .pc-total .v{color:var(--green-l);font-weight:700;font-size:1.05rem}
 .go-btn{width:100%;background:var(--green);color:white;border:none;border-radius:50px;padding:.85rem;font-family:"Outfit",sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;margin-top:.9rem;transition:background .2s}
 .go-btn:hover{background:var(--green-l)}
-
+.freq-comparison{background:rgba(61,170,125,.08);border:1px solid rgba(61,170,125,.2);border-radius:10px;padding:.85rem;margin-top:.65rem}
+.freq-compare-title{font-size:.72rem;font-weight:700;color:var(--green-dark);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.6rem}
+.freq-rows{display:flex;flex-direction:column;gap:.4rem}
+.freq-row{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;padding:.2rem .3rem;border-radius:6px}
+.freq-row .fl{color:var(--text-m)}
+.freq-row .fp{font-weight:700;color:var(--text)}
+.freq-row.best{background:var(--green-pale);padding:.3rem .5rem}
+.freq-row.best .fl{color:var(--green-dark);font-weight:600}
+.freq-row.best .fp{color:var(--green-dark)}
+.saving-badge{background:var(--green);color:white;font-size:.68rem;font-weight:700;padding:.15rem .45rem;border-radius:50px;margin-left:.4rem}
+.extras-section{background:var(--warm);border-radius:var(--r);padding:1.25rem;margin-top:.5rem;border:1px solid var(--sand)}
+.extras-title{font-size:.78rem;font-weight:700;color:var(--text);letter-spacing:.04em;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+.extras-title::before{content:"✦";color:var(--green);font-size:.65rem}
+.extra-row{display:flex;align-items:center;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid var(--sand);gap:.5rem}
+.extra-row:last-child{border-bottom:none}
+.extra-info{flex:1}
+.extra-info h5{font-size:.83rem;font-weight:600;color:var(--text);margin-bottom:.1rem}
+.extra-info p{font-size:.75rem;color:var(--text-s)}
+.extra-qty{display:flex;align-items:center;gap:.5rem}
+.extra-price{font-size:.82rem;font-weight:700;color:var(--green-dark);min-width:55px;text-align:right}
+.qty-btn{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--sand);background:white;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;font-family:"Outfit";transition:all .15s;color:var(--text-m)}
+.qty-btn:hover{border-color:var(--green);color:var(--green)}
+.qty-val{font-size:.85rem;font-weight:600;min-width:18px;text-align:center}
 /* FORM */
 .form-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:start}
-.form-info h2{margin-bottom:.75rem}
 .finfo-row{display:flex;gap:.8rem;align-items:flex-start;margin-bottom:.9rem}
 .fi-icon{width:38px;height:38px;background:var(--green-pale);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
 .fi-text h4{font-size:.88rem;font-weight:600;color:var(--navy)}
@@ -211,7 +261,8 @@ p.lead{color:var(--text-m);font-size:.92rem;line-height:1.8;font-weight:300}
 .cpills{display:flex;gap:.4rem;flex-wrap:wrap}
 .cpill{background:white;border:1px solid var(--green);color:var(--green-dark);font-size:.74rem;font-weight:600;padding:.2rem .6rem;border-radius:50px}
 .lf{background:white;border-radius:var(--rxl);padding:2rem;border:1px solid var(--sand)}
-.lf-title{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:1.4rem}
+.lf-title{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:.3rem}
+.lf-sub{font-size:.82rem;color:var(--text-s);margin-bottom:1.3rem}
 .f-row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
 .f-grp{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.7rem}
 .f-grp label{font-size:.77rem;font-weight:600;color:var(--text);letter-spacing:.03em}
@@ -224,15 +275,17 @@ p.lead{color:var(--text-m);font-size:.92rem;line-height:1.8;font-weight:300}
 .sub-btn{width:100%;background:var(--green);color:white;padding:.95rem;border-radius:50px;font-family:"Outfit",sans-serif;font-size:.95rem;font-weight:600;border:none;cursor:pointer;margin-top:.5rem;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.45rem}
 .sub-btn:hover{background:var(--green-l);transform:translateY(-1px)}
 .f-note{font-size:.74rem;color:var(--text-s);text-align:center;margin-top:.55rem;line-height:1.5}
-.ok-msg{display:none;background:var(--green-pale);border:1.5px solid var(--green);border-radius:var(--r);padding:1.1rem;text-align:center;color:var(--green-dark);font-weight:500;font-size:.9rem}
-
-/* CALENDLY */
+.ok-msg{display:none;background:var(--green-pale);border:1.5px solid var(--green);border-radius:var(--r);padding:1.1rem;text-align:center;color:var(--green-dark);font-weight:500;font-size:.9rem;margin-bottom:1rem}
+.resumen-prev{background:var(--green-pale);border:1px solid rgba(42,124,92,.2);border-radius:var(--r);padding:1rem;margin-bottom:1rem;font-size:.81rem;color:var(--green-dark)}
+.resumen-prev strong{display:block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:.4rem}
 .cal-wrap{background:var(--warm);border-radius:var(--rxl);padding:2rem;border:1px solid var(--sand);margin-top:.5rem}
 .cal-wrap h3{font-family:"Playfair Display",serif;font-size:1.35rem;font-weight:700;color:var(--navy);margin-bottom:.4rem}
 .cal-wrap p{font-size:.83rem;color:var(--text-m);margin-bottom:1.1rem}
-.calendly-inline-widget{min-width:280px;height:650px;border-radius:var(--r);overflow:hidden}
-
-/* FAQ dark */
+.mp-btn{display:flex;align-items:center;justify-content:center;gap:.65rem;width:100%;background:#009ee3;color:white;border:none;border-radius:50px;padding:1rem 2rem;font-family:"Outfit",sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;margin-bottom:.65rem}
+.mp-btn:hover{background:#007ab8;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,158,227,.35)}
+.mp-badges{display:flex;justify-content:center;gap:.65rem;flex-wrap:wrap;margin-top:.85rem}
+.mp-badge{background:var(--warm);border:1px solid var(--sand);border-radius:50px;padding:.25rem .75rem;font-size:.73rem;color:var(--text-m)}
+/* FAQ */
 .faq-sec{background:var(--navy)}
 .faq-sec .stag{background:rgba(61,170,125,.18);color:var(--green-l)}
 .faq-sec h2{color:white}
@@ -245,7 +298,6 @@ p.lead{color:var(--text-m);font-size:.92rem;line-height:1.8;font-weight:300}
 .faq-a-inner{padding:0 1.25rem .9rem;color:rgba(255,255,255,.48);font-size:.85rem;line-height:1.78}
 .faq-item.open .faq-a{max-height:280px}
 .faq-item.open .faq-arrow{transform:rotate(45deg)}
-
 /* FOOTER */
 footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba(255,255,255,.06)}
 .footer-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:2rem}
@@ -256,502 +308,498 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
 .f-col a,.f-col p{display:block;font-size:.82rem;color:rgba(255,255,255,.46);text-decoration:none;margin-bottom:.45rem;transition:color .2s;line-height:1.5}
 .f-col a:hover{color:var(--green-l)}
 .f-bottom{max-width:1100px;margin:0 auto;padding-top:1.1rem;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;font-size:.74rem;color:rgba(255,255,255,.22);flex-wrap:wrap;gap:.5rem}
-
-/* ── FAMILY CARE MANIFESTO ── */
-.family-mission{background:var(--navy);padding:6rem 2rem;position:relative;overflow:hidden}
-.family-mission::before{content:"";position:absolute;top:-20%;right:-10%;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(61,170,125,.08) 0%,transparent 65%);pointer-events:none}
-.fm-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.family-mission .stag{background:rgba(61,170,125,.18);color:var(--green-l)}
-.family-mission h2{color:white;margin-bottom:1rem}
-.family-mission h2 em{color:var(--green-l)}
-.family-mission .lead{color:rgba(255,255,255,.52);margin-bottom:2rem}
-.fm-pillars{display:flex;flex-direction:column;gap:1.1rem}
-.fm-pill{display:flex;gap:1rem;align-items:flex-start}
-.fm-pill-icon{width:44px;height:44px;border-radius:12px;background:rgba(61,170,125,.15);border:1px solid rgba(61,170,125,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.fm-pill-icon svg{width:20px;height:20px;fill:none;stroke:var(--green-l);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.fm-pill-body h4{font-size:.95rem;font-weight:600;color:white;margin-bottom:.2rem}
-.fm-pill-body p{font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.65}
-.fm-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.07);border-radius:var(--rl);overflow:hidden}
-.fm-stat{background:var(--navy);padding:2rem;transition:background .25s}
-.fm-stat:hover{background:rgba(255,255,255,.04)}
-.fm-stat-n{font-family:"Playfair Display",serif;font-size:3rem;font-weight:800;color:var(--green-l);line-height:1;margin-bottom:.4rem}
-.fm-stat-l{font-size:.83rem;color:rgba(255,255,255,.5);line-height:1.55}
-.fm-tagline{grid-column:1/-1;text-align:center;padding-top:.5rem}
-.fm-tagline blockquote{font-family:"Playfair Display",serif;font-style:italic;font-size:1.55rem;color:rgba(255,255,255,.65);border:none;line-height:1.5;max-width:620px;margin:0 auto}
-.fm-tagline blockquote em{color:var(--green-l);font-style:normal}
-
-/* ── SITUACIONES ── */
-.situations{background:var(--cream);padding:6rem 2rem}
-.sit-header{text-align:center;margin-bottom:3.5rem}
-.sit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
-.sit-card{border-radius:var(--rl);overflow:hidden;position:relative;cursor:pointer;group}
-.sit-card-img{position:relative;height:380px;overflow:hidden}
-.sit-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block}
-.sit-card:hover .sit-card-img img{transform:scale(1.04)}
-.sit-card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(15,31,46,.88) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.75rem}
-.sit-card-tag{display:inline-flex;align-items:center;gap:.4rem;background:rgba(61,170,125,.22);border:1px solid rgba(61,170,125,.35);color:var(--green-l);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border-radius:50px;margin-bottom:.65rem;width:fit-content}
-.sit-card-tag::before{content:"";width:5px;height:5px;background:var(--green-l);border-radius:50%}
-.sit-card-title{font-family:"Playfair Display",serif;font-size:1.45rem;font-weight:700;color:white;line-height:1.2;margin-bottom:.5rem}
-.sit-card-title em{font-style:italic;color:var(--green-l)}
-.sit-card-desc{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:1rem;max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .4s ease;opacity:0}
-.sit-card:hover .sit-card-desc{max-height:80px;opacity:1}
-.sit-card-steps{display:flex;flex-direction:column;gap:.45rem;max-height:0;overflow:hidden;transition:max-height .4s ease .1s,opacity .3s ease .1s;opacity:0}
-.sit-card:hover .sit-card-steps{max-height:200px;opacity:1}
-.sit-step{display:flex;gap:.6rem;align-items:flex-start}
-.sit-step-n{width:22px;height:22px;border-radius:50%;background:var(--green);color:white;font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.05rem}
-.sit-step-n.oz{background:rgba(61,170,125,.2);border:1px solid var(--green-l);color:var(--green-l);font-size:.62rem}
-.sit-step span{font-size:.75rem;color:rgba(255,255,255,.65);line-height:1.5}
-.sit-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--green);color:white;font-weight:600;font-size:.82rem;padding:.55rem 1.25rem;border-radius:50px;margin-top:.85rem;transition:background .2s;width:fit-content}
-.sit-cta:hover{background:var(--green-l)}
-.sit-bottom{text-align:center;margin-top:3rem}
-
-/* ── HERO IMPROVEMENTS ── */
-.hero-family-badge{display:inline-flex;align-items:center;gap:.55rem;background:rgba(61,170,125,.15);border:1px solid rgba(61,170,125,.3);color:var(--green-l);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.38rem 1rem;border-radius:50px;margin-bottom:1.1rem}
-.hero-family-badge::before{content:"♡";font-size:.9rem}
-.hero-divider{width:40px;height:2px;background:var(--green);margin:1.5rem 0}
-
-/* WA */
 .wa{position:fixed;bottom:1.5rem;right:1.5rem;z-index:300;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,.45);text-decoration:none;animation:wap 3s ease-in-out infinite}
 .wa:hover{transform:scale(1.1)}
 @keyframes wap{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 .wa svg{width:26px;height:26px;fill:white}
-
 /* REVEAL */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .rv.on{opacity:1;transform:none}
 .rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}
-
 /* RESPONSIVE */
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;min-height:auto}
-  .hero-right{height:300px}
+  .hero-right{height:280px}
   .hero-left::after{display:none}
-  .svc-layout,.calc-layout,.form-layout,.car-wrap,.trust-imgs{grid-template-columns:1fr}
-  .pet-card{grid-template-columns:1fr}.pet-img{display:none}
-  .img-band{grid-template-columns:1fr;height:auto;margin:0 1rem}
-  .ib-r{grid-template-columns:1fr 1fr;grid-template-rows:1fr}
-  .footer-in{grid-template-columns:1fr}
-  .f-row{grid-template-columns:1fr}
+  .calc-layout,.form-layout,.svc-steps-grid{grid-template-columns:1fr}
+  .footer-in,.f-row{grid-template-columns:1fr}
   nav{padding:.75rem 1rem}
   .nav-links{display:none;position:fixed;top:58px;left:0;right:0;flex-direction:column;background:var(--cream);padding:1.5rem;gap:1rem;border-bottom:1px solid var(--sand);box-shadow:var(--sh)}
   .nav-links a{color:var(--text-m)!important}
   .nav-links.open{display:flex}
   .burger{display:flex}
-  .car-img{min-height:240px}
-  .fm-grid{grid-template-columns:1fr}
-  .sit-grid{grid-template-columns:1fr}
-  .sit-card-img{height:320px}
-  .sit-card-desc,.sit-card-steps{max-height:200px!important;opacity:1!important}
-  .fm-stats-grid{grid-template-columns:1fr 1fr}
+  .svc-hero-img{height:260px}
+  .svc-hero-fade{background:linear-gradient(180deg,transparent 25%,var(--navy-m) 75%)}
+  .svc-hero-content{position:relative;width:100%;padding:1.5rem;background:var(--navy-m)}
+  .tab-bar-light,.tab-bar{max-width:100%;overflow-x:auto}
+  .rc-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
+<div class="urgency-bar">🌿 Buín · Paine · Sur RM <span>· Agenda esta semana — disponibilidad limitada</span></div>
+
 <nav id="nav">
   <a href="#" class="logo">Ozone<em>Care</em></a>
   <div class="nav-links" id="nl">
-    <a href="#family-care">Family Care</a>
+    <a href="#cuidado">¿Para quién?</a>
     <a href="#servicio">Servicio</a>
-    <a href="#situaciones">Tu situación</a>
-    <a href="#reserva">Reservar</a>
-    <a href="https://wa.me/56929177852" class="nav-cta">WhatsApp →</a>
+    <a href="#reserva">Precios</a>
+    <a href="#reserva" class="nav-cta">Reservar ahora →</a>
   </div>
-  <div class="burger" onclick="document.getElementById('nl').classList.toggle('open')">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="burger" onclick="document.getElementById('nl').classList.toggle('open')"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- HERO -->
 <section style="padding:0">
 <div class="hero">
   <div class="hero-left">
-    <div class="hero-family-badge">Family Care · Desinfección profesional</div>
+    <div class="hero-badge">Family Care · Sin químicos</div>
     <div class="eyebrow">Buín · Paine · Sur RM</div>
-    <h1>Protege lo que<br><em>más amas.</em></h1>
-    <p class="hero-p">Solo vapor a alta temperatura y ozono O₃ — sin químicos, sin residuos. Desinfección profesional que protege de verdad a bebés, niños, mascotas y personas con alergias.</p>
-    <!--hero-p-end-->n alergias.</p>
+    <h1>Un hogar más sano<br>para quienes<br><em>más amas.</em></h1>
+    <p class="hero-p">Vapor a 100°C y ozono O₃ eliminan el 99.9% de patógenos. Sin químicos ni residuos. La protección más segura para toda tu familia.</p>
     <div class="hero-divider"></div>
     <div class="trust-pills">
-      <div class="tpill">🔒 Caja de seguridad</div>
+      <div class="tpill">🔒 Empresa registrada</div>
       <div class="tpill">📹 Cámaras IP en vivo</div>
-      <div class="tpill">✅ Empresa registrada</div>
-      <div class="tpill">🌿 Ozono O₃ profesional</div>
+      <div class="tpill">🌿 Cero químicos</div>
+      <div class="tpill">✅ Informe post-servicio</div>
     </div>
     <div class="ctas">
       <a href="#reserva" class="btn btn-g">Calcular precio →</a>
-      <a href="#servicio" class="btn btn-wh">Ver servicio</a>
+      <a href="#cuidado" class="btn btn-wh">Ver situaciones</a>
     </div>
   </div>
-  <div class="hero-right">
-    <img src="images/hero.png" alt="Familia con bebé en hogar desinfectado">
-  </div>
+  <div class="hero-right"><img src="images/hero.png" alt="Familia en hogar desinfectado"></div>
 </div>
 </section>
 
-<!-- FAMILY CARE MANIFESTO -->
-<section class="family-mission" id="family-care">
-<div class="c">
-  <div class="fm-grid rv">
-    <div>
-      <div class="stag">Family Care</div>
-      <h2>Cuidamos lo que<br><em>más amas.</em></h2>
-      <p class="lead">Tu hogar no debería ser una fuente de riesgo. Usamos solo vapor a alta temperatura y ozono O₃ — sin químicos, sin residuos tóxicos. La solución más segura para familias con bebés, niños y mascotas.</p>
-      <div class="fm-pillars">
-        <div class="fm-pill">
-          <div class="fm-pill-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          </div>
-          <div class="fm-pill-body">
-            <h4>Bebés y niños primero</h4>
-            <p>Solo vapor y ozono — sin productos químicos. El O₃ se convierte en O₂ puro. Cero riesgo para los más pequeños.</p>
-          </div>
-        </div>
-        <div class="fm-pill">
-          <div class="fm-pill-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-          </div>
-          <div class="fm-pill-body">
-            <h4>Elimina el riesgo invisible</h4>
-            <p>Vapor a 100°C + ozono O₃ destruyen bacterias, virus, ácaros y hongos desde la raíz — sin dejar rastro químico.</p>
-          </div>
-        </div>
-        <div class="fm-pill">
-          <div class="fm-pill-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-          </div>
-          <div class="fm-pill-body">
-            <h4>Confianza en cada visita</h4>
-            <p>Cámaras IP en vivo, caja de seguridad y reporte con fotos. Tú controlas todo, incluso desde lejos.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="fm-stats-grid">
-        <div class="fm-stat">
-          <div class="fm-stat-n">99.9%</div>
-          <div class="fm-stat-l">Bacterias y virus eliminados con ozono certificado</div>
-        </div>
-        <div class="fm-stat">
-          <div class="fm-stat-n">O₃→O₂</div>
-          <div class="fm-stat-l">Sin residuos tóxicos. Solo oxígeno puro al terminar</div>
-        </div>
-        <div class="fm-stat">
-          <div class="fm-stat-n">30 min</div>
-          <div class="fm-stat-l">Tiempo de ciclo de ozono para espacio de hasta 80 m²</div>
-        </div>
-        <div class="fm-stat">
-          <div class="fm-stat-n">2 fases</div>
-          <div class="fm-stat-l">Limpieza química + alta temperatura, luego ozono profundo</div>
-        </div>
-      </div>
-      <div class="fm-tagline" style="margin-top:1.5rem">
-        <blockquote>"No limpiamos para que se vea bien. Desinfectamos para que <em>tu familia esté segura.</em>"</blockquote>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- FACTS -->
-<section class="facts" id="problema">
-<div class="c">
-  <div style="text-align:center">
-    <div class="stag">Datos que importan</div>
-    <h2>Tu espacio parece limpio.<br><em>Los gérmenes no se ven.</em></h2>
-    <p class="lead" style="max-width:520px;margin:.75rem auto 0">Para familias con bebés, mascotas y espacios colectivos como jardines y oficinas, la diferencia entre limpiar y desinfectar es crítica.</p>
-  </div>
-  <div class="facts-grid rv">
-    <div class="fc"><div class="fc-n">83%</div><h3>de hogares con perros presentan bacterias fecales en suelos y superficies</h3><p>El pelaje y las patas transportan patógenos que sobreviven horas en pisos donde gatean tus hijos.</p><div class="fc-src">Journal of Applied Microbiology</div></div>
-    <div class="fc"><div class="fc-n">10M+</div><h3>de ácaros pueden vivir en una habitación no tratada, causando asma infantil</h3><p>El ozono penetra en textiles y superficies porosas eliminando ácaros que el detergente no alcanza.</p><div class="fc-src">Asthma and Allergy Foundation</div></div>
-    <div class="fc"><div class="fc-n">70%</div><h3>de bacterias en cocinas provienen del contacto entre superficies y alimentos</h3><p>El desengrasado visual no es desinfección. Solo la química profesional o el ozono eliminan la contaminación invisible.</p><div class="fc-src">NSF International</div></div>
-    <div class="fc"><div class="fc-n">5×</div><h3>más contaminado puede estar el aire interior de oficinas y jardines infantiles</h3><p>Esporas de hongos, alérgenos y virus se acumulan sin ventilación. El ozono purifica el aire en 30 minutos.</p><div class="fc-src">OMS — Calidad del Aire Interior</div></div>
-  </div>
-</div>
-</section>
-
-<!-- IMG BAND -->
-<div style="padding:2rem 0;background:var(--cream)">
-<div class="img-band">
-  <div class="ib-main">
-    <img src="images/perro-bebe.png" alt="Perro y bebé en el suelo">
-    <div class="ib-overlay"><span class="ib-label">El riesgo invisible en tu hogar</span></div>
-  </div>
-  <div class="ib-r">
-    <div class="ib-sub"><img src="images/bebe-dormido.png" alt="Bebé dormido"><div class="ib-overlay"><span class="ib-label">Ambiente seguro para tu bebé</span></div></div>
-    <div class="ib-sub"><img src="images/equipo.png" alt="Equipo OzoneCare"><div class="ib-overlay"><span class="ib-label">Equipo profesional certificado</span></div></div>
-  </div>
-</div>
-</div>
-
-<!-- SERVICE -->
-<section id="servicio" style="background:var(--cream)">
-<div class="c">
-  <div class="rv">
-    <div class="stag">Cómo funciona</div>
-    <h2>Desinfección en 2 fases.<br><em>Sin químicos. Sin residuos.</em></h2>
-    <p class="lead" style="max-width:520px;margin-top:.75rem">Solo vapor a alta temperatura y ozono O₃. La combinación más segura y efectiva — sin productos químicos que afecten a tu familia.</p>
-  </div>
-  <div class="svc-layout">
-    <div>
-      <div class="ph-label">Fase 1 — Limpieza de superficies</div>
-      <div class="step-item rv d1"><div class="step-n">1</div><div class="step-body"><h4>Living y comedor</h4><p>Vapor a 100°C con UWANT Y100 en superficies, mesas, manillas e interruptores — sin químicos, sin residuos.</p></div></div>
-      <div class="step-item rv d2"><div class="step-n">2</div><div class="step-body"><h4>Habitaciones</h4><p>Superficies, veladores, puertas. Aspirado y limpieza profunda de pisos. Sin abrir cajones ni tocar pertenencias.</p></div></div>
-      <div class="step-item rv d3"><div class="step-n">3</div><div class="step-body"><h4>Baños — zona crítica</h4><p>WC, ducha, lavamanos, espejo, suelo. Solo vapor profesional a alta temperatura — sin bactericidas químicos.</p></div></div>
-      <div class="step-item rv d4"><div class="step-n">4</div><div class="step-body"><h4>Cocina</h4><p>Vapor a alta temperatura en mesón, encimera, horno exterior, microondas y fregadero — desengrase profundo sin químicos.</p></div></div>
-      <div class="ph-label">Fase 2 — Desinfección con ozono</div>
-      <div class="step-item rv" style="border:1.5px solid var(--green);border-radius:var(--r);padding:.85rem 1rem;background:var(--green-pale)">
-        <div class="step-n oz">O₃</div>
-        <div class="step-body"><h4 style="color:var(--green-dark)">Ciclo de ozono al salir — 30 min</h4><p style="color:var(--green)">Generador HE-151N 5g/h al terminar. O₃ elimina virus, bacterias, hongos y olores — luego vuelve a ser O₂ puro. Cero químicos, cero residuos.</p></div>
-      </div>
-      <div class="pet-card rv">
-        <div>
-          <div class="pet-badge">Servicio opcional · Mascotas</div>
-          <h3>Kit aseo para mascotas</h3>
-          <p>Aspirado especializado de pelo y caspa con RedRoad P17 — succión al vacío 99% con 6 herramientas profesionales. Antes del ciclo de ozono para máxima efectividad.</p>
-          <div class="pet-feats">
-            <div class="pf">Elimina el 99% del pelo flotante previo al ozono</div>
-            <div class="pf">Sin estrés para tu mascota</div>
-            <div class="pf"><a href="https://kinestore.cl/producto/preventa-redroad-aspiradora-p17-para-mascotas-kit-de-aseo-para-pelo-de-perro-succion-al-vacio-99-con-6-herramientas-de-aseo-profesional/" target="_blank" style="color:var(--green);font-weight:600">Ver equipo →</a></div>
-          </div>
-        </div>
-        <img src="images/mascota-hogar.png" alt="Mascota en hogar" class="pet-img">
-      </div>
-    </div>
-    <div>
-      <div class="aside-card rv">
-        <img src="images/ozono.png" alt="Ozono desinfectando hogar">
-        <div class="ozone-box">
-          <div class="ozone-f">O₃ → O₂ + O•</div>
-          <div class="ozone-d">El átomo libre destruye la membrana celular de virus y bacterias</div>
-        </div>
-        <div class="b-list">
-          <div class="b-item">Destruye bacterias, virus y hongos sin residuos tóxicos</div>
-          <div class="b-item">Elimina olores de mascota, cocina y humedad — sin enmascararlos</div>
-          <div class="b-item">Penetra en textiles, rincones y superficies porosas</div>
-          <div class="b-item">Después de 30 min vuelve a ser O₂ puro — 100% seguro</div>
-          <div class="b-item">Misma tecnología de hospitales, guarderías y hoteles de lujo</div>
-        </div>
-        <div class="not-inc">
-          <strong>⚠ Esto NO es parte del servicio</strong>
-          Tender camas · Ordenar ropa · Lavar loza · Interior de electrodomésticos · Ventanas en altura
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- NICHES -->
-<section class="niches" id="nichos">
+<!-- CUIDADO FAMILIAR — tarjetas reactivas -->
+<section class="care-sec" id="cuidado">
 <div class="c">
   <div style="text-align:center" class="rv">
-    <div class="stag">¿Para quién es?</div>
-    <h2>No solo hogares.<br><em>Cualquier espacio donde la higiene importa.</em></h2>
-    <p class="lead" style="max-width:540px;margin:.75rem auto 0">El mismo servicio profesional adaptado a cada tipo de espacio y necesidad.</p>
+    <div class="stag">Cuidado familiar</div>
+    <h2>Momentos en que tu familia<br><em>merece lo mejor.</em></h2>
+    <p class="lead" style="max-width:520px;margin:.75rem auto 0">Reconoce tu situación. Descubre cómo el ozono profesional cuida a los tuyos sin químicos ni riesgos.</p>
   </div>
-  <div class="niches-grid" style="margin-top:2.5rem">
-    <div class="niche-card rv d1">
-      <div class="niche-icon">🏠</div>
-      <h3>Hogares y condominios</h3>
-      <p>Familias con bebés, niños y mascotas que quieren un ambiente realmente desinfectado cada semana o quincena.</p>
-      <div class="niche-price">desde $32.000/visita</div>
+  <div class="rc-grid">
+    <div class="rc rv d1">
+      <div class="rc-img"><img src="images/care-mascotas.png" alt="Mascotas en casa"></div>
+      <div class="rc-overlay">
+        <div class="rc-tag">Mascotas en casa</div>
+        <div class="rc-title">Tu peludo llena<br><em>el hogar de alegría.</em></div>
+        <p class="rc-desc">Los peludos traen microorganismos en patas y pelaje que se acumulan en textiles y rincones. El ozono neutraliza su origen, no los enmascara.</p>
+        <div class="rc-detail">
+          <div class="rc-di"><div class="rc-di-n">1</div><span>Vapor a 100°C en textiles, suelos y manillas</span></div>
+          <div class="rc-di"><div class="rc-di-n oz">O₃</div><span>Ciclo de ozono penetra en alfombras y sofás — neutraliza el origen del olor</span></div>
+          <a href="#reserva" class="rc-cta">Ver precio →</a>
+        </div>
+      </div>
     </div>
-    <div class="niche-card rv d2">
-      <div class="niche-icon">🧒</div>
-      <h3>Jardines infantiles</h3>
-      <p>Alta concentración de niños = alta transmisión de virus. El ozono desinfecta aulas, baños y juguetes sin químicos.</p>
-      <div class="niche-price">desde $45.000/sesión</div>
+    <div class="rc rv d2">
+      <div class="rc-img"><img src="images/care-bebe.png" alt="Bebé en casa"></div>
+      <div class="rc-overlay">
+        <div class="rc-tag">Bebé en casa</div>
+        <div class="rc-title">Va a gatear por<br><em>cada rincón.</em></div>
+        <p class="rc-desc">Los bebés exploran con manos y boca. Quieres que cada centímetro esté protegido de verdad, sin usar productos que les afecten.</p>
+        <div class="rc-detail">
+          <div class="rc-di"><div class="rc-di-n">1</div><span>Vapor 100°C en suelos, juguetes y textiles — sin químicos</span></div>
+          <div class="rc-di"><div class="rc-di-n oz">O₃</div><span>Ozono se convierte en O₂ puro — 100% seguro en 30 min</span></div>
+          <a href="#reserva" class="rc-cta">Ver precio →</a>
+        </div>
+      </div>
     </div>
-    <div class="niche-card rv d3">
-      <div class="niche-icon">💼</div>
-      <h3>Oficinas y espacios corporativos</h3>
-      <p>Desinfección mensual o quincenal de escritorios, salas de reunión, baños y cocina. Fuera de horario laboral.</p>
-      <div class="niche-price">desde $55.000/sesión</div>
+    <div class="rc rv d3">
+      <div class="rc-img"><img src="images/care-alergias.png" alt="Alergias en casa"></div>
+      <div class="rc-overlay">
+        <div class="rc-tag">Alergias y sensibilidades</div>
+        <div class="rc-title">Un ambiente más limpio<br><em>para quien lo necesita.</em></div>
+        <p class="rc-desc">Ácaros y patógenos en colchones y alfombras son desencadenantes frecuentes. El tratamiento preventivo periódico hace la diferencia.</p>
+        <div class="rc-detail">
+          <div class="rc-di"><div class="rc-di-n">1</div><span>Vapor elimina alérgenos en textiles — sin productos químicos</span></div>
+          <div class="rc-di"><div class="rc-di-n oz">O₃</div><span>Ozono en paredes y rincones — efecto duradero hasta 15 días</span></div>
+          <a href="#reserva" class="rc-cta">Ver precio →</a>
+        </div>
+      </div>
     </div>
-    <div class="niche-card rv d4">
-      <div class="niche-icon">💇</div>
-      <h3>Salones de belleza y centros de estética</h3>
-      <p>Bacterias en instrumental, hongos en cabinas. Ozono entre clientes para garantizar higiene profesional.</p>
-      <div class="niche-price">desde $40.000/sesión</div>
-    </div>
-    <div class="niche-card rv d1">
-      <div class="niche-icon">🐾</div>
-      <h3>Veterinarias y peluquerías caninas</h3>
-      <p>Eliminación de olores, bacterias y hongos entre atenciones. Ambiente sano para animales y propietarios.</p>
-      <div class="niche-price">desde $45.000/sesión</div>
-    </div>
-    <div class="niche-card rv d2">
-      <div class="niche-icon">🏋️</div>
-      <h3>Gimnasios y centros deportivos</h3>
-      <p>Vestuarios, máquinas y colchonetas. Alta humedad + uso intensivo = foco ideal para hongos y bacterias.</p>
-      <div class="niche-price">desde $65.000/sesión</div>
+    <div class="rc rv d4">
+      <div class="rc-img"><img src="images/care-familia.png" alt="Familia sana"></div>
+      <div class="rc-overlay">
+        <div class="rc-tag">Ambiente sano preventivo</div>
+        <div class="rc-title">Cuidado antes<br><em>de que algo pase.</em></div>
+        <p class="rc-desc">No tienes que esperar a que algo pase. La desinfección periódica es un cuidado preventivo — como el médico, pero para tu hogar.</p>
+        <div class="rc-detail">
+          <div class="rc-di"><div class="rc-di-n sh">♺</div><span>Suscripción quincenal o semanal — sin permanencia</span></div>
+          <div class="rc-di"><div class="rc-di-n oz">O₃</div><span>Mismo equipo, mismo protocolo, mismo cuidado cada visita</span></div>
+          <a href="#reserva" class="rc-cta">Ver planes →</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 </section>
 
-<!-- SITUACIONES -->
+<!-- NUESTRA PROMESA + ESTUDIOS — PESTAÑAS UNIFICADAS -->
+<section class="info-tabs-sec" id="ciencia">
+<div class="c">
+  <div class="rv" style="text-align:center">
+    <div class="stag">Por qué OzoneCare</div>
+    <h2>Ciencia detrás del<br><em>cuidado.</em></h2>
+    <p class="lead" style="max-width:520px;margin:.75rem auto 0;color:rgba(255,255,255,.5)">Tecnología de hospitales pediátricos aplicada en hogares, jardines y autos del sur de la RM.</p>
+  </div>
+  <div class="tab-bar rv">
+    <button class="tab-btn active" id="infTab0" onclick="setInfoTab(0,true)">
+      🌿 Nuestra promesa
+      <div class="tbp" id="infProg0"></div>
+    </button>
+    <button class="tab-btn" id="infTab1" onclick="setInfoTab(1,true)">
+      📊 Lo que dicen los estudios
+      <div class="tbp" id="infProg1"></div>
+    </button>
+  </div>
+
+  <!-- PROMESA -->
+  <div class="tab-pane active" id="infPane0">
+    <div class="promise-grid">
+      <div class="pc2 rv d1">
+        <div class="pc2-icon"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <h4>100% seguro para toda la familia</h4>
+        <p>El O₃ se descompone en O₂ puro en 30 minutos. Sin rastros. Sin riesgo para bebés ni mascotas después del ciclo.</p>
+        <div class="pc2-badge">O₃ → O₂ puro</div>
+      </div>
+      <div class="pc2 rv d2">
+        <div class="pc2-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+        <h4>Neutraliza olores desde el origen</h4>
+        <p>No enmascara. Destruye molecularmente el origen del olor — mascota, humedad, cocina. El efecto dura días, no horas.</p>
+        <div class="pc2-badge">Efecto duradero</div>
+      </div>
+      <div class="pc2 rv d3">
+        <div class="pc2-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+        <h4>Tú en control, aunque no estés</h4>
+        <p>Cámaras IP plug&play en vivo + reporte fotográfico al terminar. Ves cada paso desde tu teléfono.</p>
+        <div class="pc2-badge">Cámaras IP en vivo</div>
+      </div>
+      <div class="pc2 rv d4">
+        <div class="pc2-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+        <h4>Empresa registrada. Sin improvisar.</h4>
+        <p>Contrato de servicio, seguro de responsabilidad civil, protocolo estandarizado y mismo equipo en cada visita.</p>
+        <div class="pc2-badge">Empresa formal</div>
+      </div>
+      <div class="pc2 rv d1">
+        <div class="pc2-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <h4>2 fases. Cobertura total.</h4>
+        <p>Vapor a 100°C en superficies + ciclo de ozono ambiental. Las dos tecnologías juntas se complementan donde la otra no alcanza.</p>
+        <div class="pc2-badge">Vapor + Ozono</div>
+      </div>
+      <div class="pc2 rv d2">
+        <div class="pc2-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div>
+        <h4>Sin permanencia. Sin sorpresas.</h4>
+        <p>Suscripción quincenal o semanal que puedes suspender con 48 horas de aviso. El precio baja, la calidad no.</p>
+        <div class="pc2-badge">Flexible</div>
+      </div>
+    </div>
+    <div class="science-quote rv">
+      <blockquote>"No limpiamos para que se vea bien. Cuidamos para que <em>tu familia esté protegida.</em>"</blockquote>
+    </div>
+  </div>
+
+  <!-- ESTUDIOS -->
+  <div class="tab-pane" id="infPane1">
+    <div class="studies-grid">
+      <div class="sc rv d1">
+        <div class="sc-n">83%</div>
+        <h3>Hogares con mascotas presentan microorganismos en suelos</h3>
+        <p>Las patas y el pelaje transportan patógenos que permanecen en pisos donde gatean los niños — invisibles pero activos.</p>
+        <div class="sc-src">Journal of Applied Microbiology</div>
+      </div>
+      <div class="sc rv d2">
+        <div class="sc-n">10M+</div>
+        <h3>Ácaros pueden habitar una habitación sin tratamiento regular</h3>
+        <p>El ozono penetra en colchones y textiles eliminándolos donde los métodos convencionales no llegan.</p>
+        <div class="sc-src">Asthma and Allergy Foundation</div>
+      </div>
+      <div class="sc rv d3">
+        <div class="sc-n">70%</div>
+        <h3>De contaminación en cocinas viene de superficies y utensilios</h3>
+        <p>Solo vapor profesional u ozono elimina la contaminación invisible. La esponja no alcanza.</p>
+        <div class="sc-src">NSF International</div>
+      </div>
+      <div class="sc rv d4">
+        <div class="sc-n">5×</div>
+        <h3>Más patógenos en interiores mal ventilados que en exteriores</h3>
+        <p>El ozono purifica el aire ambiental en 30 minutos sin productos ni residuos de ningún tipo.</p>
+        <div class="sc-src">OMS — Calidad del Aire Interior</div>
+      </div>
+    </div>
+    <div class="science-quote rv" style="margin-top:2rem">
+      <blockquote>"La protección invisible<br>es la que <em>más importa.</em>"</blockquote>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- NUESTROS SERVICIOS — ESTILO UNIFICADO CON IMAGEN HERO + FADE -->
+<section class="svc-sec" id="servicio">
+<div class="c">
+  <div class="rv" style="margin-bottom:.5rem">
+    <div class="stag">Nuestros servicios</div>
+    <h2>Desinfección profesional<br><em>para cada necesidad.</em></h2>
+  </div>
+
+  <div class="tab-bar-light rv" id="svcTabBar">
+    <button class="tab-btn-light active" id="svcTab0" onclick="setSvcTab(0,true)">
+      🏠 Hogar y familia
+      <div class="tbp" id="svcProg0"></div>
+    </button>
+    <button class="tab-btn-light" id="svcTab1" onclick="setSvcTab(1,true)">
+      🧒 Jardines y oficinas
+      <div class="tbp" id="svcProg1"></div>
+    </button>
+    <button class="tab-btn-light" id="svcTab2" onclick="setSvcTab(2,true)">
+      🚗 Desinfección de autos
+      <div class="tbp" id="svcProg2"></div>
+    </button>
+  </div>
+
+  <!-- TAB 0: HOGAR -->
+  <div class="tab-pane active" id="svcPanel0">
+    <div class="svc-hero rv">
+      <img src="images/svc-hogar.png" alt="Desinfección hogar" class="svc-hero-img">
+      <div class="svc-hero-fade"></div>
+      <div class="svc-hero-content">
+        <div class="stag">Servicio principal</div>
+        <h3>Hogar y<br><em>familia</em></h3>
+        <p>Vapor a 100°C + ciclo de ozono autónomo. Dos fases que se complementan para una cobertura total — superficies, textiles, aire y rincones.</p>
+        <div class="svc-hero-feats">
+          <div class="shf">99.9% patógenos eliminados · Sin químicos</div>
+          <div class="shf">Cámaras IP en vivo · Informe fotográfico</div>
+          <div class="shf">O₃ → O₂ puro en 30 min. Seguro para bebés</div>
+        </div>
+        <a href="#reserva" class="btn btn-g" style="align-self:flex-start">Ver precio →</a>
+      </div>
+    </div>
+    <div class="svc-steps-grid rv">
+      <div class="svc-phase">
+        <div class="svc-phase-label">Fase 1 — Vapor a 100°C</div>
+        <div class="svc-step"><div class="sn">1</div><div class="sb"><h4>Living, comedor y habitaciones</h4><p>Superficies, mesas, manillas e interruptores. Sin químicos.</p></div></div>
+        <div class="svc-step"><div class="sn">2</div><div class="sb"><h4>Baños</h4><p>WC, ducha, lavamanos. Solo vapor — sin bactericidas químicos.</p></div></div>
+        <div class="svc-step"><div class="sn">3</div><div class="sb"><h4>Cocina</h4><p>Mesón, encimera y fregadero. Desengrase profundo sin productos.</p></div></div>
+        <div class="not-inc-box"><strong>⚠ No incluye el servicio</strong>Tender camas · Ordenar ropa · Lavar loza · Interior electrodomésticos · Ventanas en altura</div>
+      </div>
+      <div class="svc-phase">
+        <div class="svc-phase-label">Fase 2 — Ozono O₃</div>
+        <div class="svc-step" style="border-color:var(--green);background:var(--green-pale)">
+          <div class="sn oz">O₃</div>
+          <div class="sb"><h4 style="color:var(--green-dark)">Ciclo autónomo — 30 minutos</h4><p style="color:var(--green-dark)">Activamos el generador HE-151N al salir. El O₃ penetra en textiles, rincones y aire. Luego vuelve a ser O₂ puro.</p></div>
+        </div>
+        <div class="svc-step"><div class="sn oz">O₃</div><div class="sb"><h4>Neutralización de olores</h4><p>Mascota, humedad, cocina — destruye el origen molecularmente.</p></div></div>
+        <div class="svc-step"><div class="sn oz">O₃</div><div class="sb"><h4>Penetración en textiles</h4><p>Colchones, sofás y alfombras donde el vapor no llega.</p></div></div>
+        <div class="oz-science">
+          <div class="oz-formula">O₃ → O₂ + O•</div>
+          <div class="oz-sub">El átomo libre desactiva patógenos y neutraliza olores. Solo oxígeno puro al terminar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 1: JARDINES/OFICINAS -->
+  <div class="tab-pane" id="svcPanel1">
+    <div class="svc-hero rv">
+      <img src="images/svc-jardines.png" alt="Jardín infantil desinfección" class="svc-hero-img">
+      <div class="svc-hero-fade"></div>
+      <div class="svc-hero-content">
+        <div class="stag">Espacios corporativos y educativos</div>
+        <h3>Jardines<br><em>y oficinas</em></h3>
+        <p>El mismo servicio profesional adaptado a espacios de alta circulación. Horarios flexibles sin interrumpir actividades.</p>
+        <div class="svc-hero-feats">
+          <div class="shf">Fuera de horario laboral o educativo</div>
+          <div class="shf">Protocolo corporativo disponible</div>
+          <div class="shf">Fines de semana y festivos a convenir</div>
+        </div>
+        <a href="#reserva" class="btn btn-g" style="align-self:flex-start">Cotizar →</a>
+      </div>
+    </div>
+    <div class="niche-grid-inline rv">
+      <div class="niche-card"><div class="niche-icon">🧒</div><h3>Jardines infantiles</h3><p>Aulas, baños y juguetes sin químicos. Sin interrumpir actividades.</p><div class="niche-price">desde $45.000</div></div>
+      <div class="niche-card"><div class="niche-icon">💼</div><h3>Oficinas y corporativos</h3><p>Desinfección quincenal fuera de horario. Protocolo con informe.</p><div class="niche-price">desde $55.000</div></div>
+      <div class="niche-card"><div class="niche-icon">🐾</div><h3>Veterinarias y grooming</h3><p>Neutralización de olores y patógenos entre atenciones.</p><div class="niche-price">desde $45.000</div></div>
+      <div class="niche-card"><div class="niche-icon">🏋️</div><h3>Gimnasios y deportes</h3><p>Vestuarios y máquinas. Alta humedad requiere regularidad.</p><div class="niche-price">desde $65.000</div></div>
+    </div>
+  </div>
+
+  <!-- TAB 2: AUTOS -->
+  <div class="tab-pane" id="svcPanel2">
+    <div class="svc-hero rv">
+      <img src="images/svc-auto.png" alt="Desinfección auto con ozono" class="svc-hero-img">
+      <div class="svc-hero-fade"></div>
+      <div class="svc-hero-content">
+        <div class="stag">Servicio adicional</div>
+        <h3>Desinfección<br><em>de Autos</em></h3>
+        <p>El interior de tu auto acumula más microorganismos que muchas superficies del hogar. Ozono profundo para habitáculo, tapicería y aire acondicionado. En tu domicilio, sin mover el auto.</p>
+        <div class="svc-hero-feats">
+          <div class="shf">Neutraliza olores de mascota, cigarrillo y comida</div>
+          <div class="shf">Patógenos del aire acondicionado eliminados</div>
+          <div class="shf">Sin mover el auto — en tu domicilio</div>
+        </div>
+        <a href="#reserva" class="btn btn-g" style="align-self:flex-start">Agregar → +$15.000</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ¿TE IDENTIFICAS? -->
 <section class="situations" id="situaciones">
 <div class="c">
-  <div class="sit-header rv">
+  <div style="text-align:center" class="rv">
     <div class="stag">¿Te identificas?</div>
-    <h2>Situaciones reales.<br><em>Soluciones concretas.</em></h2>
-    <p class="lead" style="max-width:540px;margin:.75rem auto 0">Cada familia tiene una situación distinta. Reconoce la tuya y descubre cómo el ozono profesional la resuelve de raíz.</p>
+    <h2>Tu situación.<br><em>Nuestra solución.</em></h2>
+    <p class="lead" style="max-width:540px;margin:.75rem auto 0">Cada familia tiene un contexto distinto. Reconoce el tuyo.</p>
   </div>
-  <div class="sit-grid">
-
-    <!-- Card 1: Mascotas -->
-    <div class="sit-card rv d1" onclick="this.classList.toggle('active')">
-      <div class="sit-card-img">
-        <img src="images/card-mascotas.png" alt="Olores de mascotas">
-        <div class="sit-card-overlay">
-          <div class="sit-card-tag">Para dueños de mascotas</div>
-          <div class="sit-card-title">¿Tu casa huele<br><em>a mascota?</em></div>
-          <p class="sit-card-desc">El olor se impregna en textiles, alfombras y rincones. Ningún ambientador lo elimina de verdad.</p>
-          <div class="sit-card-steps">
-            <div class="sit-step"><div class="sit-step-n">1</div><span>Evaluación de puntos críticos y focos de olor</span></div>
-            <div class="sit-step"><div class="sit-step-n">2</div><span>Vapor a 100°C en superficies y textiles — sin químicos</span></div>
-            <div class="sit-step"><div class="sit-step-n oz">O₃</div><span>Ozono penetra alfombras, sofás y rincones — elimina desde la raíz</span></div>
-          </div>
-          <a href="#reserva" class="sit-cta">Agenda ahora →</a>
+  <div class="rc-grid" style="margin-top:2.5rem">
+    <div class="rc rv d1">
+      <div class="rc-img"><img src="images/sit-mascotas.png" alt="Mascotas y olor"></div>
+      <div class="rc-overlay">
+        <div class="rc-tag">Dueños de mascotas</div>
+        <div class="rc-title">El olor vuelve<br><em>al día siguiente.</em></div>
+        <p class="rc-desc">Los ambientadores solo disfrazan. El origen está en textiles y rincones.</p>
+        <div class="rc-detail">
+          <div class="rc-di"><div class="rc-di-n">1</div><span>Vapor a 100°C en textiles y superficies</span></div>
+          <div class="rc-di"><div class="rc-di-n oz">O₃</div><span>Ozono penetra en alfombras — neutraliza el origen del olor</span></div>
+          <a href="#reserva" class="rc-cta">Calcular precio →</a>
         </div>
       </div>
     </div>
-
-    <!-- Card 2: Familia/Virus -->
-    <div class="sit-card rv d2" onclick="this.classList.toggle('active')">
-      <div class="sit-card-img">
-        <img src="images/card-familia.png" alt="Protección familiar">
-        <div class="sit-card-overlay">
-          <div class="sit-card-tag">Salud familiar</div>
-          <div class="sit-card-title">Tu familia merece<br><em>respirar seguro.</em></div>
-          <p class="sit-card-desc">Virus, bacterias y hongos se acumulan donde más tocamos. La limpieza visual no alcanza.</p>
-          <div class="sit-card-steps">
-            <div class="sit-step"><div class="sit-step-n">1</div><span>Mapeamos cocina, baños, manillas e interruptores</span></div>
-            <div class="sit-step"><div class="sit-step-n">2</div><span>Vapor a alta temperatura — sin residuos, sin químicos</span></div>
-            <div class="sit-step"><div class="sit-step-n oz">O₃</div><span>Ozono ambiental — llega donde no llegan las manos</span></div>
-          </div>
-          <a href="#reserva" class="sit-cta">Agenda ahora →</a>
+    <div class="rc rv d2">
+      <div class="rc-img"><img src="images/sit-familia.png" alt="Familia sana"></div>
+      <div class="rc-overlay">
+        <div class="rc-tag">Salud familiar</div>
+        <div class="rc-title">Quieres que tu familia<br><em>respire mejor.</em></div>
+        <p class="rc-desc">Patógenos se acumulan donde más se toca. La limpieza visual no alcanza para proteger de verdad.</p>
+        <div class="rc-detail">
+          <div class="rc-di"><div class="rc-di-n">1</div><span>Vapor en cocina, baños y manillas</span></div>
+          <div class="rc-di"><div class="rc-di-n oz">O₃</div><span>Ozono ambiental — alcanza donde no llegan las manos</span></div>
+          <a href="#reserva" class="rc-cta">Calcular precio →</a>
         </div>
       </div>
     </div>
-
-    <!-- Card 3: Alergias -->
-    <div class="sit-card rv d3" onclick="this.classList.toggle('active')">
-      <div class="sit-card-img">
-        <img src="images/card-alergias.png" alt="Alergias y ácaros">
-        <div class="sit-card-overlay">
-          <div class="sit-card-tag">Alergias y ácaros</div>
-          <div class="sit-card-title">Los ácaros viven<br><em>donde duermes.</em></div>
-          <p class="sit-card-desc">Colchones, alfombras, cortinas. Los desencadenantes de tus alergias están en casa.</p>
-          <div class="sit-card-steps">
-            <div class="sit-step"><div class="sit-step-n">1</div><span>Identificamos focos de ácaros, hongos y polvo</span></div>
-            <div class="sit-step"><div class="sit-step-n">2</div><span>Vapor a 100°C destruye alérgenos — cero químicos</span></div>
-            <div class="sit-step"><div class="sit-step-n oz">O₃</div><span>Ozono penetra textiles y paredes porosas — efecto duradero</span></div>
-          </div>
-          <a href="#reserva" class="sit-cta">Agenda ahora →</a>
+    <div class="rc rv d3">
+      <div class="rc-img"><img src="images/sit-alergias.png" alt="Alergias y ácaros"></div>
+      <div class="rc-overlay">
+        <div class="rc-tag">Alergias y sensibilidades</div>
+        <div class="rc-title">Un ambiente más limpio<br><em>para quien lo necesita.</em></div>
+        <p class="rc-desc">Ácaros en colchones y alfombras son desencadenantes frecuentes. La prevención es más fácil que el tratamiento.</p>
+        <div class="rc-detail">
+          <div class="rc-di"><div class="rc-di-n">1</div><span>Vapor 100°C elimina alérgenos en textiles</span></div>
+          <div class="rc-di"><div class="rc-di-n oz">O₃</div><span>Ozono en paredes — efecto duradero hasta 15 días</span></div>
+          <a href="#reserva" class="rc-cta">Calcular precio →</a>
         </div>
       </div>
     </div>
-
-    <!-- Card 4: Airbnb -->
-    <div class="sit-card rv d1" onclick="this.classList.toggle('active')">
-      <div class="sit-card-img">
-        <img src="images/card-airbnb.png" alt="Arriendo y Airbnb">
-        <div class="sit-card-overlay">
-          <div class="sit-card-tag">Para propietarios</div>
-          <div class="sit-card-title">Tu próximo huésped<br><em>lo notará.</em></div>
-          <p class="sit-card-desc">El olor de quien estuvo antes permanece. Una limpieza estándar no alcanza para 5 estrellas.</p>
-          <div class="sit-card-steps">
-            <div class="sit-step"><div class="sit-step-n">1</div><span>Evaluación entre cada arriendo: cocina, baños, dormitorios</span></div>
-            <div class="sit-step"><div class="sit-step-n">2</div><span>Vapor a alta temperatura — sin químicos, sin residuos</span></div>
-            <div class="sit-step"><div class="sit-step-n oz">O₃</div><span>Aire fresco y neutral — listo para el siguiente huésped</span></div>
-          </div>
-          <a href="#reserva" class="sit-cta">Agenda ahora →</a>
+    <div class="rc rv d4">
+      <div class="rc-img"><img src="images/sit-airbnb.png" alt="Airbnb propietario"></div>
+      <div class="rc-overlay">
+        <div class="rc-tag">Propietarios Airbnb</div>
+        <div class="rc-title">Tu próximo huésped<br><em>lo notará.</em></div>
+        <p class="rc-desc">Una limpieza estándar no alcanza para 5 estrellas. El ozono garantiza un ambiente neutral y fresco.</p>
+        <div class="rc-detail">
+          <div class="rc-di"><div class="rc-di-n">1</div><span>Vapor entre arriendos en dormitorios y baños</span></div>
+          <div class="rc-di"><div class="rc-di-n oz">O₃</div><span>Aire fresco y neutral — listo para el siguiente huésped</span></div>
+          <a href="#reserva" class="rc-cta">Calcular precio →</a>
         </div>
       </div>
     </div>
-
-    <!-- Card 5: Bebé -->
-    <div class="sit-card rv d2" onclick="this.classList.toggle('active')">
-      <div class="sit-card-img">
-        <img src="images/card-bebe.png" alt="Bebé en casa">
-        <div class="sit-card-overlay">
-          <div class="sit-card-tag">Bebé en casa</div>
-          <div class="sit-card-title">Va a gatear por<br><em>cada rincón.</em></div>
-          <p class="sit-card-desc">Los bebés exploran todo con manos y boca. Cada superficie debe estar realmente limpia.</p>
-          <div class="sit-card-steps">
-            <div class="sit-step"><div class="sit-step-n">1</div><span>Mapeamos suelos, textiles y zonas de gateo</span></div>
-            <div class="sit-step"><div class="sit-step-n">2</div><span>Vapor a 100°C — sin químicos, 100% seguro para bebés</span></div>
-            <div class="sit-step"><div class="sit-step-n oz">O₃</div><span>Cero residuos — el ozono se convierte en O₂ puro</span></div>
-          </div>
-          <a href="#reserva" class="sit-cta">Agenda ahora →</a>
+    <div class="rc rv d1">
+      <div class="rc-img"><img src="images/sit-bebe.png" alt="Bebé gateando"></div>
+      <div class="rc-overlay">
+        <div class="rc-tag">Bebé en casa</div>
+        <div class="rc-title">Va a gatear por<br><em>cada rincón.</em></div>
+        <p class="rc-desc">Los bebés exploran todo con manos y boca. Quieres que cada superficie esté protegida sin usar productos que les afecten.</p>
+        <div class="rc-detail">
+          <div class="rc-di"><div class="rc-di-n">1</div><span>Vapor 100°C en suelos y textiles — sin químicos</span></div>
+          <div class="rc-di"><div class="rc-di-n oz">O₃</div><span>El ozono vuelve O₂ puro — seguro para bebés</span></div>
+          <a href="#reserva" class="rc-cta">Calcular precio →</a>
         </div>
       </div>
     </div>
-
   </div>
-  <div class="sit-bottom rv">
-    <a href="#reserva" class="btn btn-dk" style="background:var(--green);color:white">Ver precios y agendar →</a>
-  </div>
+  <div class="sit-bottom rv"><a href="#reserva" class="btn btn-g">Ver precios y agendar →</a></div>
 </div>
 </section>
 
-<!-- CAR -->
-<section class="car-sec" id="autos">
-<div class="c">
-  <div class="car-wrap rv">
-    <div class="car-img"><img src="images/ozono-auto.png" alt="Desinfección auto con ozono"></div>
-    <div class="car-text">
-      <div class="stag">Servicio adicional</div>
-      <h2>Desinfección<br><em>de Autos</em></h2>
-      <p class="lead">El interior de tu auto acumula más bacterias que un baño público. Ozono profundo para el habitáculo, tapicería y aire acondicionado. En tu domicilio.</p>
-      <div class="car-feats">
-        <div class="cf">Desinfección completa del habitáculo con ozono HE-151N</div>
-        <div class="cf">Eliminación definitiva de olores (mascota, cigarrillo, comida)</div>
-        <div class="cf">Bacterias y hongos del aire acondicionado eliminados</div>
-        <div class="cf">Sin mover el auto — servicio en tu domicilio</div>
-      </div>
-      <a href="#reserva" class="btn btn-g">Agregar auto a mi servicio →</a>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- TRUST -->
-<section class="trust" id="seguridad">
+<!-- CONFIANZA TOTAL — tarjetas reactivas -->
+<section class="trust-sec" id="seguridad">
 <div class="c">
   <div style="text-align:center" class="rv">
-    <div class="stag">Seguridad y confianza</div>
+    <div class="stag">Confianza total</div>
     <h2>Ingresamos a tu espacio.<br><em>La confianza es todo.</em></h2>
+    <p class="lead" style="max-width:500px;margin:.75rem auto 0">Cada detalle está pensado para que sientas seguridad absoluta cuando no estás.</p>
   </div>
-  <div class="trust-grid">
-    <div class="tc rv d1"><div class="tc-icon">🔒</div><h3>Caja de seguridad</h3><p>Acceso sin entrega de llaves directas. El código lo manejas tú siempre.</p></div>
-    <div class="tc rv d2"><div class="tc-icon">📹</div><h3>Cámaras IP en vivo</h3><p>Instalamos cámaras WiFi plug&play al iniciar. Verás en tiempo real desde tu teléfono.</p></div>
-    <div class="tc rv d3"><div class="tc-icon">📋</div><h3>Informe post-servicio</h3><p>Fotos antes/después + checklist firmado por WhatsApp al terminar.</p></div>
-    <div class="tc rv d4"><div class="tc-icon">🏢</div><h3>Empresa registrada</h3><p>Contrato de servicio y seguro de responsabilidad civil. No somos un particular.</p></div>
-    <div class="tc rv d1"><div class="tc-icon">👔</div><h3>Equipo identificado</h3><p>Uniforme con logo visible y protocolo de entrada estandarizado desde el primer día.</p></div>
-    <div class="tc rv d2"><div class="tc-icon">🔁</div><h3>Mismo equipo siempre</h3><p>En suscripción, el mismo equipo cada visita. Confianza real, no sorpresas.</p></div>
-  </div>
-  <div class="trust-imgs rv">
-    <div class="ti"><img src="images/equipo-pro.png" alt="Equipo profesional"><div class="ti-overlay"><div class="ti-label"><h4>Equipo certificado</h4><p>Uniformado, identificado y asegurado</p></div></div></div>
+  <div class="rc-grid">
+    <div class="rc rv d1">
+      <div class="rc-img"><img src="images/trust-camara.png" alt="Cámaras IP en vivo"></div>
+      <div class="rc-overlay">
+        <div class="rc-tag">Control en tiempo real</div>
+        <div class="rc-title">Ves todo<br><em>desde tu teléfono.</em></div>
+        <p class="rc-desc">Cámaras IP WiFi plug&play que instalamos al llegar. Ves el servicio en vivo desde cualquier lugar.</p>
+        <div class="rc-detail">
+          <div class="rc-di"><div class="rc-di-n sh">📹</div><span>Cámara instalada al inicio, retirada al terminar</span></div>
+          <div class="rc-di"><div class="rc-di-n sh">📱</div><span>Acceso desde tu teléfono — sin aplicaciones adicionales</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="rc rv d2">
+      <div class="rc-img"><img src="images/trust-informe.png" alt="Informe post servicio"></div>
+      <div class="rc-overlay">
+        <div class="rc-tag">Trazabilidad total</div>
+        <div class="rc-title">Fotos antes y después<br><em>por WhatsApp.</em></div>
+        <p class="rc-desc">Reporte fotográfico + checklist firmado enviado al terminar. Sabes exactamente qué se hizo y cómo quedó.</p>
+        <div class="rc-detail">
+          <div class="rc-di"><div class="rc-di-n sh">📋</div><span>Checklist de cada zona tratada</span></div>
+          <div class="rc-di"><div class="rc-di-n sh">📸</div><span>Fotos antes/después por zona. Todo documentado.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="rc rv d3">
+      <div class="rc-img"><img src="images/trust-empresa.png" alt="Empresa registrada"></div>
+      <div class="rc-overlay">
+        <div class="rc-tag">Formalidad total</div>
+        <div class="rc-title">Empresa registrada.<br><em>No somos un particular.</em></div>
+        <p class="rc-desc">Contrato de servicio, seguro de responsabilidad civil y protocolo estandarizado. Operamos con seriedad desde el primer día.</p>
+        <div class="rc-detail">
+          <div class="rc-di"><div class="rc-di-n sh">🏢</div><span>Contrato de servicio en cada visita</span></div>
+          <div class="rc-di"><div class="rc-di-n sh">🔒</div><span>Seguro de responsabilidad civil vigente</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="rc rv d4">
+      <div class="rc-img"><img src="images/trust-equipo.png" alt="Equipo identificado"></div>
+      <div class="rc-overlay">
+        <div class="rc-tag">Mismo equipo siempre</div>
+        <div class="rc-title">Lo reconoces.<br><em>Te reconoce.</em></div>
+        <p class="rc-desc">Uniforme identificado, mismo equipo en cada visita de suscripción. Acceso por caja de seguridad — sin entregar llaves.</p>
+        <div class="rc-detail">
+          <div class="rc-di"><div class="rc-di-n sh">👔</div><span>Uniforme con logo visible en cada visita</span></div>
+          <div class="rc-di"><div class="rc-di-n sh">🔑</div><span>Caja de seguridad — tú controlas el código siempre</span></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 </section>
 
-<!-- BOOKING 3 STEPS -->
+<!-- BOOKING -->
 <section class="booking" id="reserva">
 <div class="c">
-  <div class="rv">
+  <div class="rv" style="text-align:center;margin-bottom:1.5rem">
     <div class="stag">Reserva tu servicio</div>
-    <h2>En 3 pasos simples.<br><em>Sin complicaciones.</em></h2>
+    <h2>3 pasos. Menos de 3 minutos.<br><em>Sin complicaciones.</em></h2>
   </div>
   <div class="step-tabs" style="margin-top:2rem">
-    <div class="step-tab active" onclick="goStep(1,this)">① Calcula precio</div>
-    <div class="step-tab" onclick="goStep(2,this)">② Tus datos</div>
-    <div class="step-tab" onclick="goStep(3,this)">③ Agenda online</div>
+    <div class="step-tab active" id="stp1">① Precio</div>
+    <div class="step-tab" id="stp2">② Tus datos</div>
+    <div class="step-tab" id="stp3">③ Agendar</div>
   </div>
 
   <!-- STEP 1 -->
@@ -766,7 +814,6 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
             <option value="home120">Hogar 100–140 m²</option>
             <option value="garden">Jardín infantil (hasta 150 m²)</option>
             <option value="office">Oficina (hasta 150 m²)</option>
-            <option value="salon">Salón / estética / veterinaria</option>
             <option value="gym">Gimnasio / deporte</option>
           </select>
         </div>
@@ -774,23 +821,16 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
           <div class="opt-lbl">Número de baños</div>
           <div class="opt-row">
             <div class="ob active" onclick="setO(this,'bath',1)">1</div>
-            <div class="ob" onclick="setO(this,'bath',2)">2</div>
-            <div class="ob" onclick="setO(this,'bath',3)">3</div>
-            <div class="ob" onclick="setO(this,'bath',4)">4+</div>
+            <div class="ob" onclick="setO(this,'bath',2)">2 (+$3.000)</div>
+            <div class="ob" onclick="setO(this,'bath',3)">3 (+$7.000)</div>
+            <div class="ob" onclick="setO(this,'bath',4)">4+ (+$12.000)</div>
           </div>
         </div>
         <div class="opt-grp">
-          <div class="opt-lbl">¿Mascotas? (ozono extra)</div>
+          <div class="opt-lbl">¿Mascotas en el espacio?</div>
           <div class="opt-row">
-            <div class="ob" onclick="setO(this,'pet',0)">Sin mascotas</div>
-            <div class="ob active" onclick="setO(this,'pet',1)">Sí, tengo mascotas</div>
-          </div>
-        </div>
-        <div class="opt-grp">
-          <div class="opt-lbl">Kit aseo mascota (opcional)</div>
-          <div class="opt-row">
-            <div class="ob active" onclick="setO(this,'groom',0)">No por ahora</div>
-            <div class="ob" onclick="setO(this,'groom',1)">Sí (+$12.000)</div>
+            <div class="ob active" onclick="setO(this,'pet',0)">Sin mascotas</div>
+            <div class="ob" onclick="setO(this,'pet',1)">Sí, tengo mascotas (+$3.000)</div>
           </div>
         </div>
         <div class="opt-grp">
@@ -800,29 +840,56 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
             <div class="ob" onclick="setO(this,'car',1)">+ Auto (+$15.000)</div>
           </div>
         </div>
-        <div class="opt-grp">
-          <div class="opt-lbl">Frecuencia</div>
+        <div class="extras-section">
+          <div class="extras-title">Extras opcionales — precio por unidad</div>
+          <div class="extra-row">
+            <div class="extra-info"><h5>🛏 Colchones</h5><p>Vapor + ozono · elimina microorganismos y ácaros</p></div>
+            <div class="extra-qty"><button class="qty-btn" onclick="changeQty('mattress',-1)">−</button><span class="qty-val" id="mattress-qty">0</span><button class="qty-btn" onclick="changeQty('mattress',1)">+</button></div>
+            <div class="extra-price" id="mattress-price">$0</div>
+          </div>
+          <div class="extra-row">
+            <div class="extra-info"><h5>🛋 Sofás</h5><p>Vapor profundo en tapicería y cojines</p></div>
+            <div class="extra-qty"><button class="qty-btn" onclick="changeQty('sofa',-1)">−</button><span class="qty-val" id="sofa-qty">0</span><button class="qty-btn" onclick="changeQty('sofa',1)">+</button></div>
+            <div class="extra-price" id="sofa-price">$0</div>
+          </div>
+          <div class="extra-row">
+            <div class="extra-info"><h5>🪑 Sillas tapizadas</h5><p>Ideal comedores y oficinas</p></div>
+            <div class="extra-qty"><button class="qty-btn" onclick="changeQty('chair',-1)">−</button><span class="qty-val" id="chair-qty">0</span><button class="qty-btn" onclick="changeQty('chair',1)">+</button></div>
+            <div class="extra-price" id="chair-price">$0</div>
+          </div>
+        </div>
+        <div class="opt-grp" style="margin-top:.9rem">
+          <div class="opt-lbl">Frecuencia — mayor regularidad, mejor precio</div>
           <div class="opt-row">
             <div class="ob" onclick="setO(this,'freq','once')">Puntual</div>
             <div class="ob active" onclick="setO(this,'freq','bi')">Quincenal</div>
             <div class="ob" onclick="setO(this,'freq','week')">Semanal</div>
           </div>
         </div>
+        <div class="freq-comparison">
+          <div class="freq-compare-title">¿Cuánto ahorras con regularidad?</div>
+          <div class="freq-rows" id="freqRows"></div>
+        </div>
       </div>
       <div class="price-card">
-        <div class="pc-lbl">Precio por visita</div>
-        <div class="pc-amt" id="pcAmt">$33.000</div>
+        <div class="pc-lbl">Tu precio por visita</div>
+        <div class="pc-amt" id="pcAmt">$35.000</div>
         <div class="pc-freq" id="pcFreq">Suscripción quincenal</div>
         <div class="pc-lines">
-          <div class="pc-line"><span class="l">Base espacio</span><span class="v" id="pcBase">$33.000</span></div>
+          <div class="pc-line"><span class="l">Base espacio</span><span class="v" id="pcBase">$40.000</span></div>
           <div class="pc-line"><span class="l">Baños extra</span><span class="v" id="pcBath">$0</span></div>
-          <div class="pc-line"><span class="l">Mascotas</span><span class="v" id="pcPet">$3.000</span></div>
-          <div class="pc-line"><span class="l">Kit aseo mascota</span><span class="v" id="pcGroom">$0</span></div>
+          <div class="pc-line"><span class="l">Mascotas</span><span class="v" id="pcPet">$0</span></div>
           <div class="pc-line"><span class="l">Auto</span><span class="v" id="pcCar">$0</span></div>
+          <div class="pc-line" id="pcExtrasRow" style="display:none"><span class="l">Extras</span><span class="v" id="pcExtras">$0</span></div>
+          <div class="pc-line" style="border-top:1px solid rgba(255,255,255,.1);padding-top:.45rem;margin-top:.2rem">
+            <span class="l" style="color:rgba(255,255,255,.6)">Descuento frecuencia</span>
+            <span class="v" id="pcDisc" style="color:var(--green-l)">-$5.000</span>
+          </div>
         </div>
-        <div class="pc-total"><span class="l">Total por visita</span><span class="v" id="pcTotal">$36.000</span></div>
-        <div style="font-size:.74rem;color:rgba(255,255,255,.3);margin-top:.4rem;text-align:right" id="pcSaving"></div>
-        <button class="go-btn" onclick="goStep(2,null)">Continuar → Mis datos</button>
+        <div class="pc-total"><span class="l">Total por visita</span><span class="v" id="pcTotal">$35.000</span></div>
+        <div style="font-size:.74rem;color:var(--green-l);margin-top:.4rem;text-align:right;font-weight:600" id="pcSaving"></div>
+        <button class="go-btn" onclick="goStep(2)">Continuar → Mis datos</button>
+        <p style="font-size:.73rem;color:rgba(255,255,255,.3);text-align:center;margin-top:.5rem">Sin compromiso · Cotización gratuita</p>
       </div>
     </div>
   </div>
@@ -830,63 +897,60 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
   <!-- STEP 2 -->
   <div class="step-panel" id="step2">
     <div class="form-layout">
-      <div class="form-info">
-        <h2 style="font-size:2rem">Cuéntanos sobre<br><em>tu espacio</em></h2>
-        <p class="lead" style="margin:.6rem 0 1.25rem">Esta información nos permite preparar el servicio exacto para tus necesidades.</p>
-        <div class="finfo-row"><div class="fi-icon">🍼</div><div class="fi-text"><h4>Con bebés y niños</h4><p>Protocolo especial: productos seguros y ozono diferido para zonas infantiles.</p></div></div>
-        <div class="finfo-row"><div class="fi-icon">🐾</div><div class="fi-text"><h4>Con mascotas</h4><p>Kit de aseo + ozono extra para eliminar pelo, caspa y bacterias zoonóticas.</p></div></div>
-        <div class="finfo-row"><div class="fi-icon">💼</div><div class="fi-text"><h4>Oficinas y jardines</h4><p>Servicio en horario acordado, sin interrumpir actividades. Protocolo corporativo.</p></div></div>
-        <div class="cov-box">
-          <h4>📍 Cobertura actual</h4>
-          <div class="cpills" style="margin-top:.45rem">
-            <div class="cpill">Buín</div><div class="cpill">Paine</div><div class="cpill">Linderos</div><div class="cpill">Hospital</div><div class="cpill">Sur RM</div>
-          </div>
-        </div>
+      <div>
+        <h2 style="font-size:2rem;margin-bottom:.75rem">Cuéntanos sobre<br><em>tu espacio</em></h2>
+        <p class="lead" style="margin:.6rem 0 1.25rem">Solo 2 minutos. Nos permite preparar el servicio exacto para ti y tu familia.</p>
+        <div class="finfo-row"><div class="fi-icon">🍼</div><div class="fi-text"><h4>Con bebés y niños</h4><p>Protocolo especial con ozono diferido en zonas infantiles.</p></div></div>
+        <div class="finfo-row"><div class="fi-icon">🐾</div><div class="fi-text"><h4>Con mascotas</h4><p>Ozono adicional para neutralizar patógenos y olores de pelaje.</p></div></div>
+        <div class="finfo-row"><div class="fi-icon">💼</div><div class="fi-text"><h4>Oficinas y jardines</h4><p>Horario a convenir, sin interrumpir actividades.</p></div></div>
+        <div class="cov-box"><h4>📍 Cobertura actual</h4><div class="cpills" style="margin-top:.45rem"><div class="cpill">Buín</div><div class="cpill">Paine</div><div class="cpill">Linderos</div><div class="cpill">Hospital</div><div class="cpill">Sur RM</div></div></div>
       </div>
       <div>
+        <div class="resumen-prev" id="resumenPrev"><strong>🧾 Tu cotización</strong><span id="resumenText">Cargando...</span></div>
         <div class="lf">
-          <div class="lf-title">Solicitud gratuita</div>
-          <div id="okMsg" class="ok-msg">✅ ¡Recibido! Te contactamos en menos de 2 hrs por WhatsApp.</div>
-          <form id="lf" onsubmit="sendForm(event)">
-            <div class="f-row">
-              <div class="f-grp"><label>Nombre *</label><input class="fi" id="fN" placeholder="Tu nombre" required></div>
-              <div class="f-grp"><label>WhatsApp *</label><input type="tel" class="fi" id="fP" placeholder="+56 9 xxxx xxxx" required></div>
+          <div class="lf-title">Tus datos</div>
+          <div class="lf-sub">Te confirmamos por WhatsApp con todos los detalles.</div>
+          <div id="okMsg" class="ok-msg">✅ Abriendo WhatsApp con tu información...</div>
+          <div class="f-row">
+            <div class="f-grp"><label>Nombre *</label><input class="fi" id="fN" placeholder="Tu nombre" required></div>
+            <div class="f-grp"><label>WhatsApp *</label><input type="tel" class="fi" id="fP" placeholder="+56 9 xxxx xxxx" required></div>
+          </div>
+          <div class="f-grp"><label>Sector / Comuna *</label>
+            <select class="fi" id="fS" required>
+              <option value="">Selecciona tu sector...</option>
+              <option>Buín centro</option><option>Buín sector norte</option><option>Linderos</option>
+              <option>Paine centro</option><option>Paine sector rural</option><option>Hospital</option>
+              <option>Viluco</option><option>El Principal</option><option>Valdivia de Paine</option><option>Otro sur RM</option>
+            </select>
+          </div>
+          <div class="f-grp"><label>¿Hay bebés o niños?</label>
+            <div class="ck-grid">
+              <label class="ck"><input type="checkbox" name="kids" value="bebe"> 🍼 Bebé (0–2)</label>
+              <label class="ck"><input type="checkbox" name="kids" value="niño"> 🧒 Niño (2–5)</label>
+              <label class="ck"><input type="checkbox" name="kids" value="mayor"> 👦 Mayor 5 años</label>
+              <label class="ck"><input type="checkbox" name="kids" value="no"> Sin niños</label>
             </div>
-            <div class="f-row">
-              <div class="f-grp"><label>Sector *</label><select class="fi" id="fS" required><option value="">Selecciona...</option><option>Buín centro</option><option>Linderos</option><option>Paine</option><option>Hospital</option><option>Otro sur RM</option></select></div>
-              <div class="f-grp"><label>Tipo de espacio *</label><select class="fi" id="fT" required><option value="">Selecciona...</option><option>Hogar</option><option>Jardín infantil</option><option>Oficina</option><option>Salón / estética</option><option>Veterinaria</option><option>Gimnasio</option><option>Otro</option></select></div>
+          </div>
+          <div class="f-grp"><label>¿Mascotas?</label>
+            <div class="ck-grid">
+              <label class="ck"><input type="checkbox" name="pets" value="perro"> 🐕 Perro</label>
+              <label class="ck"><input type="checkbox" name="pets" value="gato"> 🐱 Gato</label>
+              <label class="ck"><input type="checkbox" name="pets" value="otro"> 🐾 Otra</label>
+              <label class="ck"><input type="checkbox" name="pets" value="no"> Sin mascotas</label>
             </div>
-            <div class="f-grp"><label>¿Hay bebés o niños?</label>
-              <div class="ck-grid">
-                <label class="ck"><input type="checkbox" name="kids" value="bebe"> 🍼 Bebé (0–2)</label>
-                <label class="ck"><input type="checkbox" name="kids" value="niño"> 🧒 Niño (2–5)</label>
-                <label class="ck"><input type="checkbox" name="kids" value="mayor"> 👦 Mayor 5 años</label>
-                <label class="ck"><input type="checkbox" name="kids" value="no"> Sin niños</label>
-              </div>
-            </div>
-            <div class="f-grp"><label>¿Mascotas?</label>
-              <div class="ck-grid">
-                <label class="ck"><input type="checkbox" name="pets" value="perro"> 🐕 Perro</label>
-                <label class="ck"><input type="checkbox" name="pets" value="gato"> 🐱 Gato</label>
-                <label class="ck"><input type="checkbox" name="pets" value="otro"> 🐾 Otra</label>
-                <label class="ck"><input type="checkbox" name="pets" value="no"> Sin mascotas</label>
-              </div>
-            </div>
-            <div class="f-grp"><label>Servicios de interés</label>
-              <div class="ck-grid">
-                <label class="ck"><input type="checkbox" name="svc" value="hogar" checked> 🏠 Espacio</label>
-                <label class="ck"><input type="checkbox" name="svc" value="auto"> 🚗 Auto</label>
-                <label class="ck"><input type="checkbox" name="svc" value="mascota"> 🐾 Kit mascota</label>
-                <label class="ck"><input type="checkbox" name="svc" value="urgente"> ⚡ Urgente</label>
-              </div>
-            </div>
-            <div class="f-grp"><label>Notas adicionales</label><textarea class="fi" id="fNt" rows="2" placeholder="Ej: bebé alérgico, necesito el viernes, acceso por portería..." style="resize:none"></textarea></div>
-            <button type="submit" class="sub-btn">Enviar solicitud ✦</button>
-            <p class="f-note">Sin compromiso · Respuesta en menos de 2 horas</p>
-          </form>
-        </div>
-        <div style="text-align:center;margin-top:1rem">
-          <button onclick="goStep(3,null)" class="btn btn-g">Continuar → Agendar fecha</button>
+          </div>
+          <div class="f-grp"><label>¿Cuándo necesitas el servicio?</label>
+            <select class="fi" id="fWhen">
+              <option value="">Selecciona...</option>
+              <option>Lo antes posible (esta semana)</option>
+              <option>La próxima semana</option>
+              <option>En los próximos 15 días</option>
+              <option>Solo quiero cotizar por ahora</option>
+            </select>
+          </div>
+          <div class="f-grp"><label>Notas (opcional)</label><textarea class="fi" id="fNt" rows="2" placeholder="Bebé alérgico, acceso por portería, necesito factura..." style="resize:none"></textarea></div>
+          <button type="button" class="sub-btn" onclick="sendFormAndContinue()">Continuar → Agendar fecha ✦</button>
+          <p class="f-note">Sin compromiso · Confirmamos antes de cobrar nada</p>
         </div>
       </div>
     </div>
@@ -897,22 +961,38 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
     <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:2rem;align-items:start">
       <div>
         <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--navy);margin-bottom:.65rem">Elige tu<br><em style="color:var(--green)">fecha y hora</em></h3>
-        <p class="lead" style="margin-bottom:1.1rem">Reserva directamente. Recibirás confirmación automática por correo y WhatsApp.</p>
+        <p class="lead" style="margin-bottom:1.1rem">Confirmación automática por WhatsApp.</p>
         <div style="display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.5rem">
           <div style="display:flex;gap:.65rem;align-items:center;font-size:.82rem;color:var(--text-m)"><span style="color:var(--green);font-weight:700">✓</span> Horarios en tiempo real</div>
           <div style="display:flex;gap:.65rem;align-items:center;font-size:.82rem;color:var(--text-m)"><span style="color:var(--green);font-weight:700">✓</span> Confirmación inmediata</div>
           <div style="display:flex;gap:.65rem;align-items:center;font-size:.82rem;color:var(--text-m)"><span style="color:var(--green);font-weight:700">✓</span> Reagendar sin penalidades</div>
           <div style="display:flex;gap:.65rem;align-items:center;font-size:.82rem;color:var(--text-m)"><span style="color:var(--green);font-weight:700">✓</span> Recordatorio 24 hrs antes</div>
         </div>
-        <div style="background:var(--green-pale);border-radius:var(--r);padding:1rem;border:1px solid rgba(42,124,92,.2)">
-          <div style="font-size:.73rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:.4rem">O escríbenos directamente</div>
-          <a href="https://wa.me/56929177852?text=Hola%20OzoneCare%2C%20quiero%20agendar" target="_blank" class="btn btn-g" style="width:100%;justify-content:center;font-size:.84rem">WhatsApp →</a>
+        <div style="background:var(--green-pale);border-radius:var(--rl);padding:1.5rem;border:1px solid rgba(42,124,92,.2)">
+          <div style="font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:.6rem">💳 Asegura tu fecha con pago anticipado</div>
+          <div style="font-size:.82rem;color:var(--text-m);margin-bottom:.85rem;line-height:1.6">Reserva y paga ahora. <strong>Cancelación gratis hasta 24h antes.</strong></div>
+          <div style="background:var(--navy);border-radius:var(--r);padding:1rem;text-align:center;margin-bottom:.85rem;color:white">
+            <div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.2rem">Total a pagar</div>
+            <div style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--green-l)" id="mp-show-amount">$35.000</div>
+            <div style="font-size:.75rem;color:rgba(255,255,255,.38)" id="mp-show-freq">por visita · Suscripción quincenal</div>
+          </div>
+          <a href="#" onclick="openMercadoPago(event)" class="mp-btn">
+            <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="12" fill="#fff"/><text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#009EE3" font-family="Arial">MP</text></svg>
+            Pagar con MercadoPago
+          </a>
+          <div class="mp-badges">
+            <span class="mp-badge">🔒 Pago seguro</span>
+            <span class="mp-badge">💳 Débito / Crédito</span>
+            <span class="mp-badge">📱 Transferencia</span>
+          </div>
+          <p style="font-size:.72rem;color:var(--text-s);text-align:center;margin-top:.65rem">O coordina el pago directamente por WhatsApp</p>
+          <a href="https://wa.me/56929177852?text=Hola%20OzoneCare%2C%20quiero%20agendar" target="_blank" class="btn btn-g" style="width:100%;justify-content:center;font-size:.84rem;margin-top:.55rem">WhatsApp →</a>
         </div>
       </div>
       <div class="cal-wrap">
         <h3>Agenda tu visita</h3>
         <p>Selecciona el día y hora que mejor te acomode</p>
-        <div class="calendly-inline-widget" data-url="https://calendly.com/javierodriguez05" style="min-width:280px;height:650px;"></div>
+        <iframe src="https://cal.com/ozonecare" style="width:100%;height:650px;border:none;border-radius:var(--r);"></iframe>
       </div>
     </div>
   </div>
@@ -923,32 +1003,31 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
 <section class="faq-sec" id="faq">
 <div class="c">
   <div style="text-align:center">
-    <div class="stag">FAQ</div>
+    <div class="stag">Preguntas frecuentes</div>
     <h2>Todo lo que necesitas<br><em>saber</em></h2>
   </div>
   <div class="faq-list">
-    <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">¿Cuánto dura el servicio? <span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">La fase de limpieza y desinfección dura entre 50 y 70 minutos según el tamaño. Los 30 minutos del ciclo de ozono actúan solos tras retirar el equipo. En menos de 2 horas desde que llegamos, tu espacio queda listo.</div></div></div>
-    <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">¿El ozono es seguro para mi bebé o mi perro? <span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Sí, con la precaución de no estar en el espacio durante el ciclo de 30 minutos. Después el O₃ se descompone en O₂ puro y el ambiente es 100% seguro. Es la misma tecnología de hospitales pediátricos y clínicas veterinarias.</div></div></div>
-    <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">¿Necesito estar presente? <span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">No. Trabajamos con caja de seguridad de llave y cámaras IP plug&play para que veas todo en tiempo real. Al terminar recibes fotos antes/después y checklist por WhatsApp.</div></div></div>
-    <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">¿Atienden jardines infantiles y oficinas fuera de horario? <span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Sí. Para espacios corporativos o educativos ofrecemos horarios nocturnos, fines de semana y días festivos a convenir. El servicio no interrumpe las actividades normales del espacio.</div></div></div>
-    <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">¿Qué NO incluye el servicio? <span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Somos un servicio de desinfección, no de aseo u organización. No incluye: tender camas, ordenar ropa, lavar loza, interior de electrodomésticos, ni ventanas en altura exterior.</div></div></div>
-    <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">¿Sin permanencia mínima? <span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Sin contratos de permanencia. Suspendes o modificas con 48 horas de aviso. El precio de suscripción es menor que el servicio puntual como beneficio por la regularidad.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">¿Cuánto dura el servicio? <span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">La fase de limpieza dura 50–70 minutos según tamaño. Los 30 minutos del ciclo de ozono actúan solos tras retirarnos. En menos de 2 horas desde que llegamos tu espacio queda listo.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">¿Es seguro para bebés y mascotas? <span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Sí, con la precaución de no estar durante los 30 minutos del ciclo de ozono. Después el O₃ se descompone en O₂ puro — misma tecnología de hospitales pediátricos y clínicas veterinarias.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">¿Necesito estar presente? <span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">No. Trabajamos con caja de seguridad y cámaras IP en vivo. Al terminar recibes fotos antes/después y checklist por WhatsApp.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">¿Hay contrato de permanencia? <span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Sin contratos. Suspendes con 48 horas de aviso. El precio de suscripción incluye descuento base más un porcentaje adicional sobre los extras — a mayor servicio y regularidad, mayor ahorro.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">¿Qué NO incluye? <span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Somos servicio de desinfección, no aseo ni organización. No incluye tender camas, ordenar ropa, lavar loza, interior de electrodomésticos ni ventanas en altura. Colchones, sofás y sillas se contratan como extras.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">¿Atienden jardines y oficinas fuera de horario? <span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Sí. Horarios nocturnos, fines de semana y festivos a convenir. El servicio no interrumpe actividades del espacio.</div></div></div>
   </div>
 </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-in">
     <div class="f-brand">
       <div class="fl">Ozone<em>Care</em></div>
-      <p style="font-style:italic;color:rgba(255,255,255,.45);font-size:.83rem;margin-bottom:.5rem">"Cuidamos lo que más amas"</p><p>Desinfección profesional con ozono para familias, jardines infantiles, oficinas y autos. Buín y sur de la RM.</p>
+      <p style="font-style:italic;color:rgba(255,255,255,.45);font-size:.83rem;margin-bottom:.5rem">"Cuidamos lo que más amas"</p>
+      <p>Desinfección profesional con ozono para familias, jardines, oficinas y autos. Buín y sur de la RM.</p>
     </div>
     <div class="f-col">
       <h4>Servicios</h4>
-      <a href="#servicio">Desinfección hogar</a>
-      <a href="#nichos">Jardines y oficinas</a>
-      <a href="#autos">Desinfección auto</a>
+      <a href="#servicio">Cómo funciona</a>
+      <a href="#situaciones">¿Te identificas?</a>
       <a href="#reserva">Ver precios</a>
     </div>
     <div class="f-col">
@@ -956,7 +1035,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
       <p>Buín, Región Metropolitana</p>
       <a href="https://wa.me/56929177852">+56 9 2917 7852</a>
       <a href="mailto:hola@ozonecare.cl">hola@ozonecare.cl</a>
-      <a href="https://calendly.com/javierodriguez05" target="_blank">Agendar →</a>
+      <a href="https://cal.com/ozonecare" target="_blank">Agendar →</a>
     </div>
   </div>
   <div class="f-bottom">
@@ -969,51 +1048,188 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
 </a>
 
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
 <script>
+// ── NAV ─────────────────────────────────────
 window.addEventListener("scroll",()=>document.getElementById("nav").classList.toggle("scrolled",scrollY>55));
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("on")}),{threshold:.1});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("on")}),{threshold:.08});
 document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+
+// ── FAQ ──────────────────────────────────────
 function faqToggle(el){const i=el.parentElement,was=i.classList.contains("open");document.querySelectorAll(".faq-item").forEach(x=>x.classList.remove("open"));if(!was)i.classList.add("open")}
-function goStep(n,el){document.querySelectorAll(".step-panel").forEach(p=>p.classList.remove("active"));document.querySelectorAll(".step-tab").forEach(b=>b.classList.remove("active"));document.getElementById("step"+n).classList.add("active");document.querySelectorAll(".step-tab")[n-1].classList.add("active");document.getElementById("reserva").scrollIntoView({behavior:"smooth",block:"start"})}
-let st={bath:1,pet:1,groom:0,car:0,freq:"bi"};
-const BASE={home50:26000,home80:32000,home120:43000,garden:45000,office:55000,salon:40000,gym:65000};
+
+// ── GENERIC AUTO-TAB ENGINE ──────────────────
+function makeTabSystem({tabIds,paneIds,progIds,duration,pauseMs,observeEl}){
+  let cur=0,paused=false,timer=null;
+  const total=tabIds.length;
+  function show(idx,userClick){
+    cur=idx;
+    tabIds.forEach((id,i)=>{
+      const t=document.getElementById(id);
+      if(t)t.classList.toggle("active",i===idx);
+    });
+    paneIds.forEach((id,i)=>{
+      const p=document.getElementById(id);
+      if(p)p.classList.toggle("active",i===idx);
+    });
+    progIds.forEach((id,i)=>{
+      const pb=document.getElementById(id);
+      if(!pb)return;
+      pb.style.transition="none";pb.style.width="0%";
+      if(i===idx){
+        pb.getBoundingClientRect();
+        pb.style.transition="width "+duration+"ms linear";
+        pb.style.width="100%";
+      }
+    });
+    if(userClick){
+      paused=true;clearInterval(timer);
+      setTimeout(()=>{paused=false;startCycle();},pauseMs);
+    }
+  }
+  function startCycle(){
+    clearInterval(timer);
+    show(cur,false);
+    timer=setInterval(()=>{if(!paused)show((cur+1)%total,false);},duration);
+  }
+  if(observeEl){
+    const obs=new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting&&!paused)startCycle();
+      else clearInterval(timer);
+    },{threshold:.25});
+    obs.observe(observeEl);
+  } else startCycle();
+  // expose setter for onclick
+  return (idx)=>show(idx,true);
+}
+
+// Info tabs (dark — promesa + estudios)
+const setInfoTab=makeTabSystem({
+  tabIds:["infTab0","infTab1"],
+  paneIds:["infPane0","infPane1"],
+  progIds:["infProg0","infProg1"],
+  duration:7000,pauseMs:16000,
+  observeEl:document.getElementById("ciencia")
+});
+
+// Service tabs (light)
+const setSvcTab=makeTabSystem({
+  tabIds:["svcTab0","svcTab1","svcTab2"],
+  paneIds:["svcPanel0","svcPanel1","svcPanel2"],
+  progIds:["svcProg0","svcProg1","svcProg2"],
+  duration:6000,pauseMs:14000,
+  observeEl:document.getElementById("servicio")
+});
+
+// ── BOOKING STEPS ────────────────────────────
+function goStep(n){
+  document.querySelectorAll(".step-panel").forEach(p=>p.classList.remove("active"));
+  [1,2,3].forEach(i=>document.getElementById("stp"+i).classList.toggle("active",i===n));
+  document.getElementById("step"+n).classList.add("active");
+  document.getElementById("reserva").scrollIntoView({behavior:"smooth",block:"start"});
+  if(n===2)updateResumen();
+}
+document.getElementById("stp1").onclick=()=>goStep(1);
+document.getElementById("stp2").onclick=()=>goStep(2);
+document.getElementById("stp3").onclick=()=>goStep(3);
+
+// ── CALCULATOR ───────────────────────────────
+let st={bath:1,pet:0,car:0,freq:"bi"};
+const BASE_ONCE={home50:34000,home80:40000,home120:51000,garden:53000,office:63000,gym:73000};
 const BATH={1:0,2:3000,3:7000,4:12000};
-const DISC={once:0,bi:-2000,week:-5000};
 const FL={once:"Servicio puntual",bi:"Suscripción quincenal",week:"Suscripción semanal"};
-function setO(el,k,v){st[k]=v;el.closest(".opt-row").querySelectorAll(".ob").forEach(b=>b.classList.remove("active"));el.classList.add("active");calcP()}
+const EXTRAS_P={mattress:8000,sofa:12000,chair:3500};
+const extraQtys={mattress:0,sofa:0,chair:0};
+const BASE_DISC={once:0,bi:5000,week:10000};
+const EXTRA_DISC_PCT={once:0,bi:0.08,week:0.15};
+
+function changeQty(k,d){
+  extraQtys[k]=Math.max(0,Math.min(10,(extraQtys[k]||0)+d));
+  document.getElementById(k+"-qty").textContent=extraQtys[k];
+  const p=extraQtys[k]*EXTRAS_P[k];
+  document.getElementById(k+"-price").textContent=p>0?"$"+p.toLocaleString("es-CL"):"$0";
+  calcP();
+}
+function setO(el,k,v){
+  st[k]=v;
+  el.closest(".opt-row").querySelectorAll(".ob").forEach(b=>b.classList.remove("active"));
+  el.classList.add("active");calcP();
+}
+function getExt(){return(extraQtys.mattress||0)*EXTRAS_P.mattress+(extraQtys.sofa||0)*EXTRAS_P.sofa+(extraQtys.chair||0)*EXTRAS_P.chair;}
+function calcForFreq(base,bath,pet,car,ext,fr){
+  const disc=BASE_DISC[fr]+Math.round(ext*EXTRA_DISC_PCT[fr]);
+  return{total:base+bath+pet+car+ext-disc,disc};
+}
+function f(v){return"$"+v.toLocaleString("es-CL")}
 function calcP(){
-  const sz=document.getElementById("cType").value;
-  const base=BASE[sz]||32000,bath=BATH[st.bath]||0,pet=st.pet?3000:0,groom=st.groom?12000:0,car=st.car?15000:0;
-  const disc=DISC[st.freq];const once=base+bath+pet+groom+car;const total=once+disc;const saving=once-total;
-  const f=v=>"$"+v.toLocaleString("es-CL");
-  document.getElementById("pcAmt").textContent=f(total);document.getElementById("pcFreq").textContent=FL[st.freq];
-  document.getElementById("pcBase").textContent=f(base);document.getElementById("pcBath").textContent=bath?f(bath):"$0";
-  document.getElementById("pcPet").textContent=pet?f(pet):"$0";document.getElementById("pcGroom").textContent=groom?f(groom):"$0";
-  document.getElementById("pcCar").textContent=car?f(car):"$0";document.getElementById("pcTotal").textContent=f(total);
-  document.getElementById("pcSaving").textContent=saving>0?"Ahorras "+f(saving)+" vs puntual":"";
+  const base=BASE_ONCE[document.getElementById("cType").value]||40000;
+  const bath=BATH[st.bath]||0,pet=st.pet?3000:0,car=st.car?15000:0,ext=getExt();
+  const{total,disc}=calcForFreq(base,bath,pet,car,ext,st.freq);
+  document.getElementById("pcAmt").textContent=f(total);
+  document.getElementById("pcFreq").textContent=FL[st.freq];
+  document.getElementById("pcBase").textContent=f(base);
+  document.getElementById("pcBath").textContent=bath?f(bath):"$0";
+  document.getElementById("pcPet").textContent=pet?f(pet):"$0";
+  document.getElementById("pcCar").textContent=car?f(car):"$0";
+  document.getElementById("pcDisc").textContent=disc>0?"-"+f(disc):"$0";
+  document.getElementById("pcDisc").style.color=disc>0?"var(--green-l)":"rgba(255,255,255,.45)";
+  if(ext>0){document.getElementById("pcExtrasRow").style.display="flex";document.getElementById("pcExtras").textContent=f(ext);}
+  else document.getElementById("pcExtrasRow").style.display="none";
+  document.getElementById("pcTotal").textContent=f(total);
+  const saving=calcForFreq(base,bath,pet,car,ext,"once").total-total;
+  document.getElementById("pcSaving").textContent=saving>0?"✦ Ahorras "+f(saving)+" vs puntual":"";
+  document.getElementById("mp-show-amount").textContent=f(total);
+  document.getElementById("mp-show-freq").textContent="por visita · "+FL[st.freq];
+  const rows=["once","bi","week"].map(fr=>{
+    const r=calcForFreq(base,bath,pet,car,ext,fr);
+    const active=fr===st.freq;
+    const labels={once:"Puntual",bi:"Quincenal",week:"Semanal"};
+    const badge=r.disc>0?`<span class="saving-badge">-${f(r.disc)}</span>`:"";
+    return`<div class="freq-row${active?" best":""}"><span class="fl">${labels[fr]}${badge}</span><span class="fp">${f(r.total)}/visita</span></div>`;
+  }).join("");
+  document.getElementById("freqRows").innerHTML=rows;
 }
 calcP();
-function sendForm(e){
-  e.preventDefault();
-  const n=document.getElementById("fN").value,p=document.getElementById("fP").value,s=document.getElementById("fS").value,t=document.getElementById("fT").value;
-  const kids=[...document.querySelectorAll("[name=kids]:checked")].map(c=>c.value).join(",")||"—";
-  const pets=[...document.querySelectorAll("[name=pets]:checked")].map(c=>c.value).join(",")||"—";
-  const svcs=[...document.querySelectorAll("[name=svc]:checked")].map(c=>c.value).join(",")||"—";
+
+function updateResumen(){
+  const sz=document.getElementById("cType").options[document.getElementById("cType").selectedIndex].text;
+  const total=document.getElementById("pcAmt").textContent;
+  const saving=document.getElementById("pcSaving").textContent;
+  document.getElementById("resumenText").innerHTML=`<strong>${sz}</strong> · ${FL[st.freq]} · <strong style="color:var(--green-dark)">${total}</strong>${saving?" · "+saving:""}`;
+}
+function buildSummary(){
+  const sz=document.getElementById("cType").options[document.getElementById("cType").selectedIndex].text;
+  const e=[];
+  if(extraQtys.mattress>0)e.push(`${extraQtys.mattress} colchón(es)`);
+  if(extraQtys.sofa>0)e.push(`${extraQtys.sofa} sofá(s)`);
+  if(extraQtys.chair>0)e.push(`${extraQtys.chair} silla(s)`);
+  return{sz,freq:FL[st.freq],total:document.getElementById("pcAmt").textContent,extras:e.join(", ")||"—"};
+}
+
+// ── FORMULARIO → WHATSAPP ────────────────────
+function sendFormAndContinue(){
+  const n=document.getElementById("fN").value.trim();
+  const p=document.getElementById("fP").value.trim();
+  const s=document.getElementById("fS").value;
+  if(!n||!p||!s){alert("Por favor completa tu nombre, WhatsApp y sector.");return;}
+  const kids=[...document.querySelectorAll("[name=kids]:checked")].map(c=>c.value).join(", ")||"—";
+  const pets=[...document.querySelectorAll("[name=pets]:checked")].map(c=>c.value).join(", ")||"—";
+  const when=document.getElementById("fWhen").value||"No indicado";
   const notes=document.getElementById("fNt").value||"—";
-  const msg=`Hola OzoneCare! 🌿
-*Nombre:* ${n}
-*Tel:* ${p}
-*Sector:* ${s}
-*Espacio:* ${t}
-*Niños:* ${kids}
-*Mascotas:* ${pets}
-*Servicios:* ${svcs}
-*Notas:* ${notes}`;
-  window.open("https://wa.me/56929177852?text="+encodeURIComponent(msg),"_blank");
-  document.getElementById("okMsg").style.display="block";document.getElementById("lf").reset();
-  setTimeout(()=>document.getElementById("okMsg").style.display="none",6000);
+  const sum=buildSummary();
+  const msg=`Hola OzoneCare! 🌿 Quiero reservar un servicio.\n\n*Nombre:* ${n}\n*WhatsApp:* ${p}\n*Sector:* ${s}\n\n🧾 *Cotización:*\n  • Espacio: ${sum.sz}\n  • Frecuencia: ${sum.freq}\n  • Extras: ${sum.extras}\n  • Total estimado: ${sum.total}\n\n👨‍👩‍👧 *Contexto:*\n  • Niños: ${kids}\n  • Mascotas: ${pets}\n  • Cuándo: ${when}\n  • Notas: ${notes}\n\n(Enviado desde ozonecare.cl)`;
+  document.getElementById("okMsg").style.display="block";
+  setTimeout(()=>{
+    document.getElementById("okMsg").style.display="none";
+    goStep(3);
+    window.open("https://wa.me/56929177852?text="+encodeURIComponent(msg),"_blank");
+  },800);
+}
+
+// ── MERCADOPAGO ──────────────────────────────
+function openMercadoPago(e){
+  e.preventDefault();
+  // TODO: reemplaza con: window.open("https://mpago.la/TU_LINK","_blank")
+  alert("🚧 Integración MercadoPago\n\nReemplaza openMercadoPago() con tu link real:\nwindow.open('https://mpago.la/TU_LINK','_blank')\n\nTotal: "+document.getElementById("pcAmt").textContent);
 }
 </script>
 </body>
