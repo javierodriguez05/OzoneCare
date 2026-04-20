@@ -303,20 +303,209 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
 .rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .rv.on{opacity:1;transform:none}
 .rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}
-/* RESPONSIVE */
+/* ═══════════════════════════════════════════
+   RESPONSIVE — TABLET (≤ 900px)
+═══════════════════════════════════════════ */
 @media(max-width:900px){
-  .hero{grid-template-columns:1fr;min-height:auto}
-  .hero-right{height:280px}
-  .hero-left::after{display:none}
-  .calc-layout,.form-layout{grid-template-columns:1fr}
-  .footer-in,.f-row{grid-template-columns:1fr}
-  nav{padding:.75rem 1rem}
-  .nav-links{display:none;position:fixed;top:58px;left:0;right:0;flex-direction:column;background:var(--cream);padding:1.5rem;gap:1rem;border-bottom:1px solid var(--sand);box-shadow:var(--sh)}
-  .nav-links a{color:var(--text-m)!important}
-  .nav-links.open{display:flex}
+
+  /* --- GLOBAL --- */
+  section{padding:3.5rem 1.25rem}
+  .c{padding:0}
+
+  /* --- NAV --- */
+  nav{padding:.75rem 1.1rem}
+  .nav-links{
+    display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+    flex-direction:column;justify-content:center;align-items:center;
+    background:var(--navy);padding:2rem;gap:1.75rem;z-index:199;
+    opacity:0;pointer-events:none;transition:opacity .25s
+  }
+  .nav-links.open{display:flex;opacity:1;pointer-events:all}
+  .nav-links a{color:rgba(255,255,255,.75)!important;font-size:1.15rem;font-weight:500}
+  .nav-links .nav-cta{background:var(--green)!important;color:white!important;padding:.7rem 2rem;border-radius:50px;font-size:1rem!important}
   .burger{display:flex}
-  .tab-bar-light,.tab-bar{overflow-x:auto}
-  .rc-grid{grid-template-columns:1fr}
+  /* animated burger → X */
+  .burger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+  .burger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+  nav.scrolled .burger.open span{background:white}
+
+  /* --- HERO --- */
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:6rem 1.5rem 3rem}
+  .hero-left::after{display:none}
+  h1{font-size:2.4rem}
+  .hero-p{font-size:.92rem;max-width:100%}
+  .hero-right{height:260px}
+  .hero-divider{margin:1rem 0}
+
+  /* --- GRIDS --- */
+  .rc-grid{grid-template-columns:repeat(2,1fr);gap:.85rem}
+  .rc-grid-3{grid-template-columns:repeat(2,1fr);gap:.85rem}
+  .rc-img{height:340px}
+  /* on touch: always show content */
+  .rc-desc{max-height:130px!important;opacity:1!important}
+  .rc-detail{max-height:250px!important;opacity:1!important}
+
+  /* --- INFO TABS / CIENCIA --- */
+  .tab-bar,.tab-bar-light{width:100%;overflow-x:auto}
+
+  /* --- SERVICIOS --- */
+  .sip-phases{grid-template-columns:1fr}
+  .sip-header{flex-direction:column}
+
+  /* --- CALC --- */
+  .calc-layout{grid-template-columns:1fr}
+  .price-card{position:static;margin-top:1.5rem}
+
+  /* --- STEP TABS --- */
+  .step-tabs{max-width:100%}
+  .step-tab{font-size:.76rem;padding:.65rem .5rem}
+
+  /* --- FORM --- */
+  .form-layout{grid-template-columns:1fr}
+  .f-row{grid-template-columns:1fr 1fr}
+
+  /* --- STEP 3 CALENDARIO --- */
+  #step3 > div{grid-template-columns:1fr!important}
+  .cal-wrap{margin-top:0}
+  .cal-wrap iframe{height:520px}
+
+  /* --- FOOTER --- */
+  .footer-in{grid-template-columns:1fr;gap:1.5rem}
+  .f-bottom{flex-direction:column;text-align:center;gap:.3rem}
+
+  /* --- URGENCY BAR --- */
+  .urgency-bar{font-size:.72rem;padding:.55rem 1rem}
+  .urgency-bar span{display:none}
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — SMARTPHONE (≤ 600px)
+═══════════════════════════════════════════ */
+@media(max-width:600px){
+
+  /* --- GLOBAL --- */
+  section{padding:3rem 1rem}
+  h2{font-size:1.75rem}
+  p.lead{font-size:.88rem}
+
+  /* --- URGENCY BAR --- */
+  .urgency-bar{padding:.5rem .85rem;font-size:.68rem}
+
+  /* --- HERO --- */
+  .hero-left{padding:5.5rem 1.25rem 2.5rem}
+  h1{font-size:2rem;line-height:1.12}
+  .hero-badge{font-size:.62rem;padding:.3rem .75rem}
+  .hero-p{font-size:.87rem;line-height:1.75}
+  .hero-right{height:200px}
+  .trust-pills{gap:.35rem}
+  .tpill{font-size:.68rem;padding:.25rem .7rem}
+  .ctas{flex-direction:column;gap:.65rem}
+  .btn-g,.btn-wh{width:100%;justify-content:center;padding:.85rem 1.5rem}
+
+  /* --- GRIDS DE TARJETAS --- */
+  .rc-grid{grid-template-columns:1fr;gap:.75rem}
+  .rc-grid-3{grid-template-columns:1fr;gap:.75rem}
+  .rc-img{height:300px}
+  .rc-title{font-size:1rem}
+  .rc-desc{font-size:.74rem}
+  .rc-di span{font-size:.73rem}
+
+  /* --- CARE / TRUST SECTIONS --- */
+  .care-sec,.trust-sec{padding:3rem 1rem}
+  .info-tabs-sec{padding:3rem 1rem}
+
+  /* --- CIENCIA --- */
+  .science-quote blockquote{font-size:1.15rem}
+
+  /* --- SERVICIOS (rc-grid-3 single col) --- */
+  .svc-sec{padding:3rem 1rem}
+  .svc-info-panel{padding:1.5rem}
+  .sip-title{font-size:1.2rem}
+  .sip-header{gap:1rem}
+  .sip-science{width:100%}
+  .oz-formula-sm{font-size:1.15rem}
+
+  /* --- BOOKING NAV TABS --- */
+  .step-tabs{border-radius:var(--r)}
+  .step-tab{font-size:.7rem;padding:.6rem .25rem}
+
+  /* --- STEP 1 CALC --- */
+  .opt-lbl{font-size:.75rem}
+  .ob{font-size:.77rem;padding:.44rem .75rem}
+  .osel{font-size:.84rem}
+  .pc-amt{font-size:3.2rem}
+  .freq-comparison{padding:.7rem}
+  .freq-compare-title{font-size:.68rem}
+  .freq-row{font-size:.76rem}
+
+  /* extras */
+  .extras-section{padding:1rem}
+  .extra-info h5{font-size:.8rem}
+  .extra-info p{font-size:.7rem}
+  .qty-btn{width:30px;height:30px;font-size:1rem}
+
+  /* --- STEP 2 FORM --- */
+  .lf{padding:1.25rem}
+  .lf-title{font-size:1.25rem}
+  .f-row{grid-template-columns:1fr}
+  .ck-grid{grid-template-columns:1fr 1fr}
+  .ck{font-size:.78rem;padding:.4rem .55rem}
+  .fi{font-size:.85rem;padding:.62rem .9rem}
+  .sub-btn{font-size:.88rem;padding:.85rem}
+  .resumen-prev{font-size:.78rem}
+
+  /* --- STEP 3 AGENDA --- */
+  .cal-wrap{padding:1.25rem;border-radius:var(--rl)}
+  .cal-wrap h3{font-size:1.2rem}
+  .cal-wrap iframe{height:480px}
+  #step3 .btn-g{font-size:.82rem;padding:.75rem 1.25rem}
+  .mp-btn{font-size:.9rem;padding:.85rem 1.5rem}
+  .mp-badges{gap:.4rem}
+  .mp-badge{font-size:.68rem;padding:.2rem .55rem}
+
+  /* --- SIP PROTOCOL PANEL --- */
+  .sip-phase-head{flex-wrap:wrap;gap:.4rem}
+  .sip-step{padding:.65rem}
+  .sn{width:26px;height:26px;font-size:.8rem}
+  .sb h4{font-size:.82rem}
+  .sb p{font-size:.76rem}
+
+  /* --- FAQ --- */
+  .faq-sec{padding:3rem 1rem}
+  .faq-q{font-size:.84rem;padding:.9rem 1rem}
+  .faq-a-inner{font-size:.82rem;padding:0 1rem .85rem}
+
+  /* --- FOOTER --- */
+  footer{padding:2.5rem 1rem 1.25rem}
+  .f-brand .fl{font-size:1.35rem}
+  .f-bottom{font-size:.7rem}
+
+  /* --- WA BUTTON --- */
+  .wa{width:46px;height:46px;bottom:1.1rem;right:1.1rem}
+  .wa svg{width:22px;height:22px}
+
+  /* --- REVEAL --- reduce motion en móvil --- */
+  .rv{opacity:1;transform:none}
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — SMARTPHONE PEQUEÑO (≤ 380px)
+═══════════════════════════════════════════ */
+@media(max-width:380px){
+  section{padding:2.5rem .85rem}
+  h1{font-size:1.8rem}
+  h2{font-size:1.55rem}
+  .hero-left{padding:5rem 1rem 2rem}
+  .rc-img{height:270px}
+  .step-tab{font-size:.64rem;padding:.55rem .2rem}
+  .ob{font-size:.72rem;padding:.38rem .6rem}
+  .ck{font-size:.74rem}
+  .pc-amt{font-size:2.8rem}
+  .btn-g,.btn-wh{font-size:.84rem;padding:.78rem 1.25rem}
+  .cal-wrap iframe{height:420px}
+  .urgency-bar{font-size:.62rem}
 }
 </style>
 </head>
@@ -332,7 +521,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
     <a href="#reserva">Precios</a>
     <a href="#reserva" class="nav-cta">Reservar ahora →</a>
   </div>
-  <div class="burger" onclick="document.getElementById('nl').classList.toggle('open')"><span></span><span></span><span></span></div>
+  <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- HERO -->
@@ -944,6 +1133,24 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
 // ── NAV ─────────────────────────────────────
 window.addEventListener("scroll",()=>document.getElementById("nav").classList.toggle("scrolled",scrollY>55));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("on")}),{threshold:.08});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+
+// Burger menu — animated X + close on link click
+const burger=document.getElementById("burger");
+const nl=document.getElementById("nl");
+function toggleMenu(){
+  nl.classList.toggle("open");
+  burger.classList.toggle("open");
+  // block body scroll when menu open
+  document.body.style.overflow=nl.classList.contains("open")?"hidden":"";
+}
+burger.addEventListener("click",toggleMenu);
+// close when any nav link is clicked
+nl.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+  nl.classList.remove("open");
+  burger.classList.remove("open");
+  document.body.style.overflow="";
+}));
 document.querySelectorAll(".rv").forEach(el=>io.observe(el));
 
 // ── FAQ ──────────────────────────────────────
