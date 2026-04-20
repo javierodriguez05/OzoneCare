@@ -174,6 +174,25 @@ p.lead{color:var(--text-m);font-size:.92rem;line-height:1.8;font-weight:300}
 .sip-step .sb p{color:rgba(255,255,255,.45)}
 .sip-notinc{grid-column:1/-1;background:rgba(255,255,255,.04);border-radius:var(--r);padding:.8rem 1rem;border:1px solid rgba(255,255,255,.08);font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.6;margin-top:.5rem}
 .sip-notinc strong{color:rgba(255,255,255,.6);font-size:.74rem;display:block;margin-bottom:.2rem}
+
+/* Protocolo — No incluye prominente */
+.sip-notinc-top{background:rgba(232,81,58,.08);border:1px solid rgba(232,81,58,.25);border-radius:var(--rl);padding:1.5rem;margin-bottom:1.5rem}
+.sip-notinc-title{font-size:.8rem;font-weight:700;color:#ff7a63;letter-spacing:.06em;text-transform:uppercase;margin-bottom:1rem}
+.sip-notinc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.sip-ni-item{display:flex;gap:.65rem;align-items:flex-start}
+.sip-ni-x{width:22px;height:22px;border-radius:50%;background:rgba(232,81,58,.2);color:#ff7a63;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.sip-ni-item div strong{font-size:.82rem;color:rgba(255,255,255,.8);display:block;margin-bottom:.1rem}
+.sip-ni-item div p{font-size:.75rem;color:rgba(255,255,255,.4);line-height:1.5}
+/* Requisitos */
+.sip-req{background:rgba(61,170,125,.07);border:1px solid rgba(61,170,125,.2);border-radius:var(--rl);padding:1.5rem;margin-bottom:1.5rem}
+.sip-req-title{font-size:.8rem;font-weight:700;color:var(--green-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1rem}
+.sip-req-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
+.sip-req-item{display:flex;gap:.65rem;align-items:flex-start}
+.sip-req-ok{width:22px;height:22px;border-radius:50%;background:rgba(61,170,125,.25);color:var(--green-l);font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.sip-req-item div strong{font-size:.82rem;color:rgba(255,255,255,.85);display:block;margin-bottom:.1rem}
+.sip-req-item div p{font-size:.75rem;color:rgba(255,255,255,.42);line-height:1.5}
+@media(max-width:900px){.sip-notinc-grid{grid-template-columns:1fr 1fr}.sip-req-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.sip-notinc-grid{grid-template-columns:1fr}}
 @media(max-width:900px){.sip-phases{grid-template-columns:1fr}.sip-header{flex-direction:column}}
 
 /* ── TRUST (reactive cards) ─────────────── */
@@ -545,7 +564,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
       <a href="#cuidado" class="btn btn-wh">Ver situaciones</a>
     </div>
   </div>
-  <div class="hero-right"><img src="images/card-familia.png" alt="Familia en hogar desinfectado"></div>
+  <div class="hero-right"><img src="images/hero.png" alt="Familia en hogar desinfectado"></div>
 </div>
 </section>
 
@@ -625,7 +644,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
 
   <div class="rc-grid" style="margin-top:2.5rem">
     <div class="rc rv d1">
-      <div class="rc-img"><img src="images/card-mascotas.png" alt="Mascotas y microorganismos"></div>
+      <div class="rc-img"><img src="images/mascota.png" alt="Mascotas y microorganismos"></div>
       <div class="rc-overlay">
         <div class="rc-tag">Mascotas</div>
         <div class="rc-title"><em>83%</em> de hogares con mascotas</div>
@@ -637,7 +656,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
       </div>
     </div>
     <div class="rc rv d2">
-      <div class="rc-img"><img src="images/card-alergias.png" alt="Ácaros en colchón"></div>
+      <div class="rc-img"><img src="images/acaros.png" alt="Ácaros en colchón"></div>
       <div class="rc-overlay">
         <div class="rc-tag">Ácaros</div>
         <div class="rc-title"><em>10 millones+</em> de ácaros</div>
@@ -649,7 +668,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
       </div>
     </div>
     <div class="rc rv d3">
-      <div class="rc-img"><img src="images/card-casa.png" alt="Contaminación en cocinas"></div>
+      <div class="rc-img"><img src="images/cocinas.png" alt="Contaminación en cocinas"></div>
       <div class="rc-overlay">
         <div class="rc-tag">Cocinas</div>
         <div class="rc-title"><em>70%</em> de contaminación</div>
@@ -661,7 +680,7 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
       </div>
     </div>
     <div class="rc rv d4">
-      <div class="rc-img"><img src="images/card-ozono.png" alt="Aire interior y patógenos"></div>
+      <div class="rc-img"><img src="images/ozono.png" alt="Aire interior y patógenos"></div>
       <div class="rc-overlay">
         <div class="rc-tag">Aire interior</div>
         <div class="rc-title"><em>5× más</em> patógenos</div>
@@ -789,29 +808,50 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
         <div class="oz-sub-sm">El átomo libre elimina patógenos. Solo oxígeno al terminar.</div>
       </div>
     </div>
+
+    <!-- ADVERTENCIA NO INCLUYE — prominente arriba -->
+    <div class="sip-notinc-top">
+      <div class="sip-notinc-title">⚠️ Importante — Lo que NO incluye el servicio</div>
+      <div class="sip-notinc-grid">
+        <div class="sip-ni-item"><span class="sip-ni-x">✗</span><div><strong>Lavado interior de WC</strong><p>Solo limpieza superficial exterior y aplicación de vapor a presión</p></div></div>
+        <div class="sip-ni-item"><span class="sip-ni-x">✗</span><div><strong>Tender camas / ordenar ropa</strong><p>No somos servicio de aseo doméstico ni organización</p></div></div>
+        <div class="sip-ni-item"><span class="sip-ni-x">✗</span><div><strong>Lavar loza o utensilios</strong><p>Solo superficies externas de cocina y mesones</p></div></div>
+        <div class="sip-ni-item"><span class="sip-ni-x">✗</span><div><strong>Interior de electrodomésticos</strong><p>Horno, refrigerador, microondas — exterior únicamente</p></div></div>
+        <div class="sip-ni-item"><span class="sip-ni-x">✗</span><div><strong>Ventanas en altura exterior</strong><p>Solo superficies accesibles sin riesgo</p></div></div>
+        <div class="sip-ni-item"><span class="sip-ni-x">✗</span><div><strong>Colchones, sofás y sillas</strong><p>Se contratan como extras adicionales con costo independiente</p></div></div>
+      </div>
+    </div>
+
+    <!-- REQUISITOS -->
+    <div class="sip-req">
+      <div class="sip-req-title">✅ Requisitos para realizar el servicio</div>
+      <div class="sip-req-grid">
+        <div class="sip-req-item"><span class="sip-req-ok">✓</span><div><strong>Espacio despejado</strong><p>Superficies libres para aplicar vapor — mesones, muebles accesibles</p></div></div>
+        <div class="sip-req-item"><span class="sip-req-ok">✓</span><div><strong>Personas y mascotas fuera</strong><p>Durante el ciclo de ozono (30 min) nadie debe permanecer en el espacio</p></div></div>
+        <div class="sip-req-item"><span class="sip-req-ok">✓</span><div><strong>Acceso al suministro eléctrico</strong><p>El generador de ozono requiere un enchufe 220V estándar</p></div></div>
+        <div class="sip-req-item"><span class="sip-req-ok">✓</span><div><strong>Ventanas cerradas post-ozono</strong><p>Mantener cerrado 30 min para que el ciclo actúe correctamente</p></div></div>
+      </div>
+    </div>
+
     <div class="sip-phases">
       <div class="sip-phase">
-        <div class="sip-phase-head"><span class="sip-badge">🌡️ Fase 1</span><span class="sip-phase-title">Vapor profesional a 100°C</span></div>
+        <div class="sip-phase-head"><span class="sip-badge">🌡️ Fase 1</span><span class="sip-phase-title">Vapor profesional a 100°C — limpieza superficial</span></div>
         <div class="sip-steps">
-          <div class="sip-step"><div class="sn" style="background:var(--green);color:white">1️⃣</div><div class="sb"><h4>Superficies de contacto</h4><p>Living, comedor, habitaciones — mesones, manillas, interruptores. Sin químicos.</p></div></div>
-          <div class="sip-step"><div class="sn" style="background:var(--green);color:white">2️⃣</div><div class="sb"><h4>Baños</h4><p>WC, ducha y lavamanos. Solo vapor a alta temperatura — sin bactericidas.</p></div></div>
-          <div class="sip-step"><div class="sn" style="background:var(--green);color:white">3️⃣</div><div class="sb"><h4>Cocina</h4><p>Mesón, encimera exterior y fregadero. Desengrase profundo sin productos.</p></div></div>
+          <div class="sip-step"><div class="sn" style="background:var(--green);color:white">1️⃣</div><div class="sb"><h4>Superficies de contacto</h4><p>Living, comedor, habitaciones — mesones, manillas, interruptores. Vapor a presión sobre superficies. Sin químicos.</p></div></div>
+          <div class="sip-step"><div class="sn" style="background:var(--green);color:white">2️⃣</div><div class="sb"><h4>Baños — limpieza superficial</h4><p>Exterior de WC, ducha, lavamanos y espejo. Solo vapor a alta temperatura sobre superficies — <strong>no incluye lavado interior de WC.</strong></p></div></div>
+          <div class="sip-step"><div class="sn" style="background:var(--green);color:white">3️⃣</div><div class="sb"><h4>Cocina</h4><p>Mesón, encimera exterior y fregadero. Desengrase superficial con vapor — sin productos químicos.</p></div></div>
         </div>
       </div>
       <div class="sip-phase">
         <div class="sip-phase-head"><span class="sip-badge oz">🌿 Fase 2</span><span class="sip-phase-title">Ciclo de ozono O₃ autónomo</span></div>
         <div class="sip-steps">
-          <div class="sip-step" style="border-color:var(--green);background:var(--green-pale)">
+          <div class="sip-step" style="border-color:var(--green);background:rgba(61,170,125,.08)">
             <div class="sn oz" style="width:32px;height:32px;font-size:.85rem">O₃</div>
-            <div class="sb"><h4 style="color:var(--green-dark)">Ciclo autónomo de Ozono — 30 minutos</h4><p style="color:var(--green-dark)">Lo activamos al salir. El O₃ penetra en textiles, rincones y aire. Luego vuelve a ser O₂ puro. Sin que debas estar.</p></div>
+            <div class="sb"><h4 style="color:var(--green-l)">Ciclo autónomo de Ozono — 30 minutos</h4><p>Lo activamos al salir. El O₃ penetra en textiles, rincones y aire. Luego vuelve a ser O₂ puro. Sin que debas estar.</p></div>
           </div>
           <div class="sip-step" style="border-color:rgba(61,170,125,.3)"><div class="sn oz">💨</div><div class="sb"><h4>Neutralización de olores</h4><p>Destruye molecularmente el origen — mascota, humedad, cocina. Efecto duradero.</p></div></div>
           <div class="sip-step" style="border-color:rgba(61,170,125,.3)"><div class="sn oz">🛏</div><div class="sb"><h4>Textiles y rincones</h4><p>Alcanza colchones, sofás y alfombras donde el vapor no llega.</p></div></div>
         </div>
-      </div>
-      <div class="sip-notinc">
-        <strong>⚠️ No incluye el servicio</strong>
-        Tender camas · Ordenar ropa · Lavar loza · Interior de electrodomésticos · Ventanas en altura exterior
       </div>
     </div>
   </div>
@@ -886,32 +926,36 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
       <div>
         <div class="opt-grp">
           <div class="opt-lbl">Tipo de espacio</div>
-          <select class="osel" id="cType" onchange="calcP()">
+          <select class="osel" id="cType" onchange="onTypeChange()">
             <option value="home80">Hogar 60–100 m²</option>
             <option value="home50">Hogar hasta 60 m²</option>
             <option value="home120">Hogar 100–140 m²</option>
             <option value="garden">Jardín infantil (hasta 150 m²)</option>
             <option value="office">Oficina (hasta 150 m²)</option>
             <option value="gym">Gimnasio / deporte</option>
+            <option value="auto_ozone">🚗 Auto — solo ozono</option>
+            <option value="auto_full">🚗 Auto — ozono + limpieza a vapor</option>
           </select>
         </div>
-        <div class="opt-grp">
+        <!-- Solo visible para espacios (no auto) -->
+        <div id="grp-bath" class="opt-grp">
           <div class="opt-lbl">Número de baños</div>
           <div class="opt-row">
             <div class="ob active" onclick="setO(this,'bath',1)">1</div>
-            <div class="ob" onclick="setO(this,'bath',2)">2 (+$3.000)</div>
-            <div class="ob" onclick="setO(this,'bath',3)">3 (+$7.000)</div>
-            <div class="ob" onclick="setO(this,'bath',4)">4+ (+$12.000)</div>
+            <div class="ob" onclick="setO(this,'bath',2)">2 (+$6.000)</div>
+            <div class="ob" onclick="setO(this,'bath',3)">3 (+$12.000)</div>
+            <div class="ob" onclick="setO(this,'bath',4)">4+ (+$18.000)</div>
           </div>
         </div>
-        <div class="opt-grp">
+        <div id="grp-pet" class="opt-grp">
           <div class="opt-lbl">🐾 ¿Mascotas en el espacio?</div>
           <div class="opt-row">
             <div class="ob active" onclick="setO(this,'pet',0)">Sin mascotas</div>
             <div class="ob" onclick="setO(this,'pet',1)">🐶 Sí, tengo mascotas (+$3.000)</div>
           </div>
         </div>
-        <div class="opt-grp">
+        <!-- Solo visible para espacios (no auto) -->
+        <div id="grp-car" class="opt-grp">
           <div class="opt-lbl">🚗 ¿Incluir auto?</div>
           <div class="opt-row">
             <div class="ob active" onclick="setO(this,'car',0)">Solo espacio</div>
@@ -933,9 +977,9 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
         <div class="pc-freq" id="pcFreq">Suscripción quincenal</div>
         <div class="pc-lines">
           <div class="pc-line"><span class="l">Base espacio</span><span class="v" id="pcBase">$40.000</span></div>
-          <div class="pc-line"><span class="l">Baños extra</span><span class="v" id="pcBath">$0</span></div>
-          <div class="pc-line"><span class="l">Mascotas</span><span class="v" id="pcPet">$0</span></div>
-          <div class="pc-line"><span class="l">Auto</span><span class="v" id="pcCar">$0</span></div>
+          <div class="pc-line" id="pcBathRow"><span class="l">Baños extra</span><span class="v" id="pcBath">$0</span></div>
+          <div class="pc-line" id="pcPetRow"><span class="l">Mascotas</span><span class="v" id="pcPet">$0</span></div>
+          <div class="pc-line" id="pcCarRow"><span class="l">Auto</span><span class="v" id="pcCar">$0</span></div>
           <div class="pc-line" id="pcExtrasRow" style="display:none"><span class="l">Extras</span><span class="v" id="pcExtras">$0</span></div>
           <div class="pc-line" style="border-top:1px solid rgba(255,255,255,.1);padding-top:.45rem;margin-top:.2rem">
             <span class="l" style="color:rgba(255,255,255,.6)">Descuento frecuencia</span>
@@ -943,6 +987,16 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
           </div>
         </div>
         <div class="pc-total"><span class="l">Total por visita</span><span class="v" id="pcTotal">$35.000</span></div>
+        <!-- Resumen periodo quincenal/semanal -->
+        <div id="pcPeriodBox" style="display:none;background:rgba(61,170,125,.12);border:1px solid rgba(61,170,125,.25);border-radius:10px;padding:.85rem;margin-top:.75rem">
+          <div style="font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--green-l);margin-bottom:.55rem" id="pcPeriodTitle">Resumen mensual (2 visitas)</div>
+          <div class="pc-line" style="margin-bottom:.3rem"><span class="l" id="pcPeriodVisitLabel">2 visitas × precio</span><span class="v" id="pcPeriodSub"></span></div>
+          <div class="pc-line" style="color:var(--green-l)"><span class="l" style="color:var(--green-l)" id="pcPeriodSavingLabel">Ahorro vs puntual</span><span class="v" id="pcPeriodSaving" style="color:var(--green-l)"></span></div>
+          <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:.45rem;margin-top:.35rem;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:.82rem;font-weight:700;color:white" id="pcPeriodTotalLabel">Total mensual</span>
+            <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--green-l)" id="pcPeriodTotal"></span>
+          </div>
+        </div>
         <div style="font-size:.74rem;color:var(--green-l);margin-top:.4rem;text-align:right;font-weight:600" id="pcSaving"></div>
         <div class="freq-comparison" style="margin-top:1rem">
           <div class="freq-compare-title">¿Cuánto ahorras con regularidad?</div>
@@ -1010,25 +1064,32 @@ footer{background:var(--navy);padding:3rem 2rem 1.5rem;border-top:1px solid rgba
         <div class="resumen-prev" id="resumenPrev" style="margin-bottom:1rem"><strong>🧾 Tu cotización</strong><span id="resumenText">Cargando...</span></div>
         <div class="extras-section">
           <div class="extras-title">📦 Extras opcionales — precio por unidad</div>
-          <div class="extra-row">
-            <div class="extra-info"><h5>🛏 Colchones</h5><p>Vapor + ozono · $12.000/u</p></div>
-            <div class="extra-qty"><button class="qty-btn" onclick="changeQty('mattress',-1)">−</button><span class="qty-val" id="mattress-qty">0</span><button class="qty-btn" onclick="changeQty('mattress',1)">+</button></div>
-            <div class="extra-price" id="mattress-price">$0</div>
+          <!-- Extras para ESPACIOS (hogar, jardín, oficina, gimnasio) -->
+          <div id="extras-home">
+            <div class="extra-row">
+              <div class="extra-info"><h5>🛏 Colchones</h5><p>Vapor + ozono · $12.000/u</p></div>
+              <div class="extra-qty"><button class="qty-btn" onclick="changeQty('mattress',-1)">−</button><span class="qty-val" id="mattress-qty">0</span><button class="qty-btn" onclick="changeQty('mattress',1)">+</button></div>
+              <div class="extra-price" id="mattress-price">$0</div>
+            </div>
+            <div class="extra-row">
+              <div class="extra-info"><h5>🛋 Sofás</h5><p>Vapor profundo en tapicería · $8.000/u</p></div>
+              <div class="extra-qty"><button class="qty-btn" onclick="changeQty('sofa',-1)">−</button><span class="qty-val" id="sofa-qty">0</span><button class="qty-btn" onclick="changeQty('sofa',1)">+</button></div>
+              <div class="extra-price" id="sofa-price">$0</div>
+            </div>
+            <div class="extra-row">
+              <div class="extra-info"><h5>🪑 Sillas tapizadas</h5><p>Comedores y oficinas · $3.500/u</p></div>
+              <div class="extra-qty"><button class="qty-btn" onclick="changeQty('chair',-1)">−</button><span class="qty-val" id="chair-qty">0</span><button class="qty-btn" onclick="changeQty('chair',1)">+</button></div>
+              <div class="extra-price" id="chair-price">$0</div>
+            </div>
+            <div class="extra-row">
+              <div class="extra-info"><h5>🍼 Silla de bebé</h5><p>Arnés, bandeja y tejidos · $2.500/u</p></div>
+              <div class="extra-qty"><button class="qty-btn" onclick="changeQty('babyseat',-1)">−</button><span class="qty-val" id="babyseat-qty">0</span><button class="qty-btn" onclick="changeQty('babyseat',1)">+</button></div>
+              <div class="extra-price" id="babyseat-price">$0</div>
+            </div>
           </div>
-          <div class="extra-row">
-            <div class="extra-info"><h5>🛋 Sofás</h5><p>Vapor profundo en tapicería · $8.000/u</p></div>
-            <div class="extra-qty"><button class="qty-btn" onclick="changeQty('sofa',-1)">−</button><span class="qty-val" id="sofa-qty">0</span><button class="qty-btn" onclick="changeQty('sofa',1)">+</button></div>
-            <div class="extra-price" id="sofa-price">$0</div>
-          </div>
-          <div class="extra-row">
-            <div class="extra-info"><h5>🪑 Sillas tapizadas</h5><p>Comedores y oficinas · $3.500/u</p></div>
-            <div class="extra-qty"><button class="qty-btn" onclick="changeQty('chair',-1)">−</button><span class="qty-val" id="chair-qty">0</span><button class="qty-btn" onclick="changeQty('chair',1)">+</button></div>
-            <div class="extra-price" id="chair-price">$0</div>
-          </div>
-          <div class="extra-row">
-            <div class="extra-info"><h5>🍼 Silla de bebé</h5><p>Arnés, bandeja y tejidos · $2.500/u</p></div>
-            <div class="extra-qty"><button class="qty-btn" onclick="changeQty('babyseat',-1)">−</button><span class="qty-val" id="babyseat-qty">0</span><button class="qty-btn" onclick="changeQty('babyseat',1)">+</button></div>
-            <div class="extra-price" id="babyseat-price">$0</div>
+          <!-- Extras para AUTO -->
+          <div id="extras-auto" style="display:none">
+            <div style="font-size:.8rem;color:var(--text-m);padding:.5rem 0;line-height:1.6">El servicio de auto incluye el habitáculo completo. No hay extras adicionales disponibles para este tipo de servicio.</div>
           </div>
         </div>
         <div class="finfo-row" style="margin-top:1rem"><div class="fi-icon">🍼</div><div class="fi-text"><h4>Con bebés y niños</h4><p>Protocolo especial con ozono diferido en zonas infantiles.</p></div></div>
@@ -1216,13 +1277,58 @@ document.getElementById("stp3").onclick=()=>goStep(3);
 
 // ── CALCULATOR ───────────────────────────────
 let st={bath:1,pet:0,car:0,freq:"bi"};
-const BASE_ONCE={home50:34000,home80:40000,home120:51000,garden:53000,office:63000,gym:73000};
-const BATH={1:0,2:3000,3:7000,4:12000};
+
+// Precios base puntual — subidos para que suscripción sea más atractiva
+const BASE_ONCE={
+  home50:44000, home80:52000, home120:65000,
+  garden:68000, office:78000, gym:90000,
+  auto_ozone:18000, auto_full:28000
+};
+// Baños: $6.000 por cada adicional
+const BATH={1:0,2:6000,3:12000,4:18000};
 const FL={once:"Servicio puntual",bi:"Suscripción quincenal",week:"Suscripción semanal"};
 const EXTRAS_P={mattress:12000,sofa:8000,chair:3500,babyseat:2500};
 const extraQtys={mattress:0,sofa:0,chair:0,babyseat:0};
-const BASE_DISC={once:0,bi:5000,week:10000};
-const EXTRA_DISC_PCT={once:0,bi:0.08,week:0.15};
+
+// Descuentos: quincenal 25%, semanal 1 servicio "gratis" (= 25% en 4 visitas)
+function calcForFreq(base,bath,pet,car,ext,fr){
+  const subtotal=base+bath+pet+car+ext;
+  let disc=0,total=subtotal;
+  if(fr==="bi"){
+    // 25% de descuento sobre el total
+    disc=Math.round(subtotal*0.25);
+    total=subtotal-disc;
+  } else if(fr==="week"){
+    // 1 servicio gratis en 4 = pagar 3, precio/visita = subtotal*3/4
+    total=Math.round(subtotal*3/4);
+    disc=subtotal-total;
+  }
+  return{total,disc,subtotal};
+}
+
+function isAuto(){
+  const t=document.getElementById("cType").value;
+  return t==="auto_ozone"||t==="auto_full";
+}
+
+function onTypeChange(){
+  const auto=isAuto();
+  // Mostrar/ocultar opciones que no aplican al auto
+  document.getElementById("grp-bath").style.display=auto?"none":"";
+  document.getElementById("grp-car").style.display=auto?"none":"";
+  // Mascotas aplica siempre (olor en auto también)
+  // Extras
+  document.getElementById("extras-home").style.display=auto?"none":"";
+  document.getElementById("extras-auto").style.display=auto?"block":"none";
+  // Reset baños y auto si se cambió a auto
+  if(auto){st.bath=1;st.car=0;}
+  // Ocultar/mostrar lineas del desglose
+  const bathRow=document.getElementById("pcBathRow");
+  const carRow=document.getElementById("pcCarRow");
+  if(bathRow)bathRow.style.display=auto?"none":"flex";
+  if(carRow)carRow.style.display=auto?"none":"flex";
+  calcP();
+}
 
 function changeQty(k,d){
   extraQtys[k]=Math.max(0,Math.min(10,(extraQtys[k]||0)+d));
@@ -1236,16 +1342,21 @@ function setO(el,k,v){
   el.closest(".opt-row").querySelectorAll(".ob").forEach(b=>b.classList.remove("active"));
   el.classList.add("active");calcP();
 }
-function getExt(){return(extraQtys.mattress||0)*EXTRAS_P.mattress+(extraQtys.sofa||0)*EXTRAS_P.sofa+(extraQtys.chair||0)*EXTRAS_P.chair+(extraQtys.babyseat||0)*EXTRAS_P.babyseat;}
-function calcForFreq(base,bath,pet,car,ext,fr){
-  const disc=BASE_DISC[fr]+Math.round(ext*EXTRA_DISC_PCT[fr]);
-  return{total:base+bath+pet+car+ext-disc,disc};
+function getExt(){
+  if(isAuto())return 0;
+  return(extraQtys.mattress||0)*EXTRAS_P.mattress+(extraQtys.sofa||0)*EXTRAS_P.sofa+(extraQtys.chair||0)*EXTRAS_P.chair+(extraQtys.babyseat||0)*EXTRAS_P.babyseat;
 }
 function f(v){return"$"+v.toLocaleString("es-CL")}
+
 function calcP(){
-  const base=BASE_ONCE[document.getElementById("cType").value]||40000;
-  const bath=BATH[st.bath]||0,pet=st.pet?3000:0,car=st.car?15000:0,ext=getExt();
-  const{total,disc}=calcForFreq(base,bath,pet,car,ext,st.freq);
+  const auto=isAuto();
+  const base=BASE_ONCE[document.getElementById("cType").value]||52000;
+  const bath=auto?0:(BATH[st.bath]||0);
+  const pet=st.pet?3000:0;
+  const car=(auto||st.car===0)?0:15000;
+  const ext=getExt();
+  const{total,disc,subtotal}=calcForFreq(base,bath,pet,car,ext,st.freq);
+
   document.getElementById("pcAmt").textContent=f(total);
   document.getElementById("pcFreq").textContent=FL[st.freq];
   document.getElementById("pcBase").textContent=f(base);
@@ -1257,14 +1368,40 @@ function calcP(){
   if(ext>0){document.getElementById("pcExtrasRow").style.display="flex";document.getElementById("pcExtras").textContent=f(ext);}
   else document.getElementById("pcExtrasRow").style.display="none";
   document.getElementById("pcTotal").textContent=f(total);
+
+  // Resumen por periodo
+  const periodBox=document.getElementById("pcPeriodBox");
+  if(st.freq==="bi"||st.freq==="week"){
+    periodBox.style.display="block";
+    const visits=st.freq==="bi"?2:4;
+    const periodTotal=total*visits;
+    const puntualPerVisit=calcForFreq(base,bath,pet,car,ext,"once").total;
+    const periodSaving=(puntualPerVisit*visits)-periodTotal;
+    const periodLabel=st.freq==="bi"?"Resumen mensual (2 visitas)":"Resumen mensual (4 visitas)";
+    const visitLabel=st.freq==="bi"?"2 visitas ×":"4 visitas ×";
+    const savingLabel=st.freq==="week"?"🎁 1 visita gratis incluida":"Ahorro vs puntual";
+    const totalLabel=st.freq==="bi"?"Total mensual":"Total mensual";
+    document.getElementById("pcPeriodTitle").textContent=periodLabel;
+    document.getElementById("pcPeriodVisitLabel").textContent=`${visitLabel} ${f(total)}`;
+    document.getElementById("pcPeriodSub").textContent=f(periodTotal);
+    document.getElementById("pcPeriodSavingLabel").textContent=savingLabel;
+    document.getElementById("pcPeriodSaving").textContent="+"+f(periodSaving)+" de ahorro";
+    document.getElementById("pcPeriodTotalLabel").textContent=totalLabel;
+    document.getElementById("pcPeriodTotal").textContent=f(periodTotal);
+  } else {
+    periodBox.style.display="none";
+  }
+
   const saving=calcForFreq(base,bath,pet,car,ext,"once").total-total;
   document.getElementById("pcSaving").textContent=saving>0?"✦ Ahorras "+f(saving)+" vs puntual":"";
   document.getElementById("mp-show-amount").textContent=f(total);
   document.getElementById("mp-show-freq").textContent="por visita · "+FL[st.freq];
+
+  // Tabla comparativa
   const rows=["once","bi","week"].map(fr=>{
     const r=calcForFreq(base,bath,pet,car,ext,fr);
     const active=fr===st.freq;
-    const labels={once:"Puntual",bi:"Quincenal",week:"Semanal"};
+    const labels={once:"Puntual",bi:"Quincenal −25%",week:"Semanal (1 gratis)"};
     const badge=r.disc>0?`<span class="saving-badge">-${f(r.disc)}</span>`:"";
     return`<div class="freq-row${active?" best":""}"><span class="fl">${labels[fr]}${badge}</span><span class="fp">${f(r.total)}/visita</span></div>`;
   }).join("");
@@ -1280,12 +1417,24 @@ function updateResumen(){
 }
 function buildSummary(){
   const sz=document.getElementById("cType").options[document.getElementById("cType").selectedIndex].text;
+  const auto=isAuto();
   const e=[];
-  if(extraQtys.mattress>0)e.push(`${extraQtys.mattress} colchón(es)`);
-  if(extraQtys.sofa>0)e.push(`${extraQtys.sofa} sofá(s)`);
-  if(extraQtys.chair>0)e.push(`${extraQtys.chair} silla(s)`);
-  if(extraQtys.babyseat>0)e.push(`${extraQtys.babyseat} silla(s) de bebé`);
-  return{sz,freq:FL[st.freq],total:document.getElementById("pcAmt").textContent,extras:e.join(", ")||"—"};
+  if(!auto){
+    if(extraQtys.mattress>0)e.push(`${extraQtys.mattress} colchón(es)`);
+    if(extraQtys.sofa>0)e.push(`${extraQtys.sofa} sofá(s)`);
+    if(extraQtys.chair>0)e.push(`${extraQtys.chair} silla(s)`);
+    if(extraQtys.babyseat>0)e.push(`${extraQtys.babyseat} silla(s) de bebé`);
+  }
+  // Include period summary in WhatsApp
+  let periodInfo="";
+  if(st.freq==="bi"){
+    const total=parseInt(document.getElementById("pcAmt").textContent.replace(/\D/g,""));
+    periodInfo=`\n  • Total mensual (2 visitas): ${f(total*2)}`;
+  } else if(st.freq==="week"){
+    const total=parseInt(document.getElementById("pcAmt").textContent.replace(/\D/g,""));
+    periodInfo=`\n  • Total mensual (4 visitas): ${f(total*4)}\n  • 🎁 Incluye 1 visita gratis/mes`;
+  }
+  return{sz,freq:FL[st.freq],total:document.getElementById("pcAmt").textContent,extras:e.join(", ")||"—",periodInfo};
 }
 
 // ── FORMULARIO → WHATSAPP ────────────────────
@@ -1299,7 +1448,7 @@ function sendFormAndContinue(){
   const when=document.getElementById("fWhen").value||"No indicado";
   const notes=document.getElementById("fNt").value||"—";
   const sum=buildSummary();
-  const msg=`Hola OzoneCare! 🌿 Quiero reservar un servicio.\n\n*Nombre:* ${n}\n*WhatsApp:* ${p}\n*Sector:* ${s}\n\n🧾 *Cotización:*\n  • Espacio: ${sum.sz}\n  • Frecuencia: ${sum.freq}\n  • Extras: ${sum.extras}\n  • Total estimado: ${sum.total}\n\n👨‍👩‍👧 *Contexto:*\n  • Niños: ${kids}\n  • Mascotas: ${pets}\n  • Cuándo: ${when}\n  • Notas: ${notes}\n\n(Enviado desde ozonecare.cl)`;
+  const msg=`Hola OzoneCare! 🌿 Quiero reservar un servicio.\n\n*Nombre:* ${n}\n*WhatsApp:* ${p}\n*Sector:* ${s}\n\n🧾 *Cotización:*\n  • Espacio: ${sum.sz}\n  • Frecuencia: ${sum.freq}\n  • Precio por visita: ${sum.total}${sum.periodInfo}\n  • Extras: ${sum.extras}\n\n👨‍👩‍👧 *Contexto:*\n  • Niños: ${kids}\n  • Mascotas: ${pets}\n  • Cuándo: ${when}\n  • Notas: ${notes}\n\n(Enviado desde ozonecare.cl)`;
   document.getElementById("okMsg").style.display="block";
   setTimeout(()=>{
     document.getElementById("okMsg").style.display="none";
